@@ -13,7 +13,7 @@ import { PageBlock } from 'notion-types'
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
-import { getBlockTitle } from 'notion-utils'
+import { getBlockTitle, parsePageId } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
@@ -122,10 +122,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  // const isRootPage =
-  //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
-  const isBlogPost =
-    block.type === 'page' && block.parent_table === 'collection'
+  const isRootPage =
+    parsePageId(block.id) === parsePageId(site.rootNotionPageId)
+  const isBlogPost = block.type === 'page' && !isRootPage // && block.parent_table === 'collection'
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
@@ -157,9 +156,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (tweet) {
       pageAside = <PageActions tweet={tweet} />
     }
-  } else {
-    pageAside = <PageSocial />
   }
+  // else {
+  //   pageAside = <PageSocial />
+  // }
+  pageAside = <PageSocial />
 
   return (
     <>
