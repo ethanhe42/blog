@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { fetchTweetAst } from 'static-tweets'
 
 export default async (
   req: NextApiRequest,
@@ -18,8 +17,7 @@ export default async (
   }
 
   console.log('getTweetAst', tweetId)
-  const tweetAst = await fetchTweetAst(tweetId)
-  console.log('tweetAst', tweetId, tweetAst)
+  console.log('tweetAst', tweetId)
 
-  res.status(200).json(tweetAst)
+  res.status(200).json('')
 }

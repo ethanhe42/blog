@@ -32,22 +32,22 @@ export async function getStaticPaths() {
   if (isDev) {
     return {
       paths: [],
-      fallback: true
+      fallback: false
     }
   }
 
   const siteMaps = await getSiteMaps()
 
   const ret = {
-    paths: siteMaps.flatMap((siteMap) =>
-      Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
-        params: {
-          pageId
-        }
-      }))
-    ),
-    // paths: [],
-    fallback: true
+    // paths: siteMaps.flatMap((siteMap) =>
+    //   Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
+    //     params: {
+    //       pageId
+    //     }
+    //   }))
+    // ),
+    paths: [],
+    fallback: false
   }
 
   console.log(ret.paths)
