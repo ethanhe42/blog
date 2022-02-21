@@ -8,18 +8,18 @@ module.exports = {
 
   // basic site info (required)
   name: 'Yihui He',
-  domain: 'transitivebullsh.it',
+  domain: 'yihui-he.github.io',
   author: 'Yihui He',
 
   // open graph metadata (optional)
-  description: 'Example site description',
+  description: 'Yihui He, AI research scientist / full stack engineer',
   socialImageTitle: 'Yihui He',
-  socialImageSubtitle: 'Hello World! 👋',
+  socialImageSubtitle: '3k citations / 4k github stars',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  twitter: 'he_yi_hui',
+  github: 'yihui-he',
+  linkedin: 'yihui-he-a4257aab',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults

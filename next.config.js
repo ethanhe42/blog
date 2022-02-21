@@ -12,7 +12,7 @@ module.exports = withBundleAnalyzer({
       // '/about': { page: '/about' }
     }
   },
-  basePath: '/blog',
+  basePath: !debug ? '/blog' : '',
   //assetPrefix: '',
   assetPrefix: !debug ? '/blog/' : '',
   webpack: (config, { dev }) => {

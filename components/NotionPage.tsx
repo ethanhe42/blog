@@ -30,7 +30,7 @@ import { PageHead } from './PageHead'
 import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
-import { GitHubShareButton } from './GitHubShareButton'
+// import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
@@ -166,6 +166,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead site={site} />
 
       <Head>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4253216309174736'
+          crossOrigin='anonymous'
+        ></script>
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
 
@@ -269,7 +274,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       />
 
-      <GitHubShareButton />
+      {/* <GitHubShareButton /> */}
     </>
   )
 }
