@@ -167,11 +167,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead site={site} />
 
       <Head>
-        <script
-          async
-          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4253216309174736'
-          crossOrigin='anonymous'
-        ></script>
+        {config.googlead && (
+          <script async src={config.googlead} crossOrigin='anonymous'></script>
+        )}
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
 
