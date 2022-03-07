@@ -6,8 +6,7 @@ module.exports = {
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
-  googlead:
-    'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4253216309174736',
+  googlead: null,
 
   // basic site info (required)
   name: 'Yihui He',
