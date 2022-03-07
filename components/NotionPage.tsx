@@ -167,6 +167,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead site={site} />
 
       <Head>
+        <meta name='propeller' content='96019d0abca680743d18c82104dc17e7' />
         {config.googlead && (
           <script async src={config.googlead} crossOrigin='anonymous'></script>
         )}
