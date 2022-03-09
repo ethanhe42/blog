@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import * as React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -167,7 +168,26 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead site={site} />
 
       <Head>
+        <script
+          async
+          src='https://www.googletagmanager.com/gtag/js?id=G-Y4TMBBH2RZ'
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Y4TMBBH2RZ', {
+                page_path: window.location.pathname,
+              });
+          `
+          }}
+        />
+
         <meta name='propeller' content='96019d0abca680743d18c82104dc17e7' />
+        <script src='https://iclickcdn.com/tag.min.js' data-zone='4919846' />
+
         {config.googlead && (
           <script async src={config.googlead} crossOrigin='anonymous'></script>
         )}

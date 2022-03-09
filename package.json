@@ -53,6 +53,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.2",
     "@types/classnames": "^2.3.1",
+    "@types/gtag.js": "^0.0.8",
     "@types/node": "^16.11.2",
     "@types/node-fetch": "^3.0.3",
     "@types/react": "^17.0.31",
