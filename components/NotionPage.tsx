@@ -185,8 +185,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }}
         />
 
-        <meta name='propeller' content='96019d0abca680743d18c82104dc17e7' />
-        <script src='https://iclickcdn.com/tag.min.js' data-zone='4919846' />
+        {/* <meta name='propeller' content='96019d0abca680743d18c82104dc17e7' />
+        <script src='https://iclickcdn.com/tag.min.js' data-zone='4919846' /> */}
 
         {config.googlead && (
           <script async src={config.googlead} crossOrigin='anonymous'></script>
