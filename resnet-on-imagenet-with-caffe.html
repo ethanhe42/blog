@@ -1,17 +1,1466 @@
-<!DOCTYPE html><html lang="en"><head><link rel="shortcut icon" href="/favicon.png"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="manifest" href="/manifest.json"/><meta charSet="utf-8"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta property="og:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="theme-color" content="#EB625A"/><meta property="og:type" content="website"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y4TMBBH2RZ"></script><script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Y4TMBBH2RZ', {
-                page_path: window.location.pathname,
-              });
-          </script><meta property="og:title" content="ResNet on ImageNet with Caffe"/><meta property="og:site_name" content="Yihui He"/><meta name="twitter:title" content="ResNet on ImageNet with Caffe"/><meta property="twitter:domain" content="yihui-he.github.io"/><meta name="twitter:creator" content="@he_yi_hui"/><meta name="description" content="Yihui He, AI research scientist / full stack engineer"/><meta property="og:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="twitter:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="twitter:card" content="summary"/><link rel="canonical" href="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"/><meta property="og:url" content="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"/><meta property="twitter:url" content="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"/><title>ResNet on ImageNet with Caffe</title><meta name="next-head-count" content="21"/><link rel="preload" href="/blog/_next/static/css/ce9b11b02642a9642d6d.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/ce9b11b02642a9642d6d.css" data-n-g=""/><link rel="preload" href="/blog/_next/static/css/4b67152b49ef8d389eef.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/4b67152b49ef8d389eef.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"></script><script src="/blog/_next/static/chunks/webpack-ed2d627650adadaab635.js" defer=""></script><script src="/blog/_next/static/chunks/framework-c93ed74a065331c4bd75.js" defer=""></script><script src="/blog/_next/static/chunks/main-0989120ac94443065aa9.js" defer=""></script><script src="/blog/_next/static/chunks/pages/_app-e24568358f9b2ca9ee76.js" defer=""></script><script src="/blog/_next/static/chunks/1bfc9850-762e4e08544c8bec659c.js" defer=""></script><script src="/blog/_next/static/chunks/ae51ba48-7f31b5cf321fe3268476.js" defer=""></script><script src="/blog/_next/static/chunks/d7eeaac4-07e2c37279f27c6f41bc.js" defer=""></script><script src="/blog/_next/static/chunks/808-8e92cc1e8e3a13c0ecab.js" defer=""></script><script src="/blog/_next/static/chunks/270-4b8341b0373202f07d27.js" defer=""></script><script src="/blog/_next/static/chunks/pages/%5BpageId%5D-845d25c09c3d16569292.js" defer=""></script><script src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_buildManifest.js" defer=""></script><script src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_ssgManifest.js" defer=""></script></head><body><script src="noflash.js"></script><div id="__next"><div class="notion notion-app light-mode notion-block-5f16dda4316e43afa4ea8fc6d6938404"><div class="notion-viewport"></div><div class="notion-frame"><header class="notion-header"><div class="nav-header"><div class="breadcrumbs"><a class="breadcrumb" href="/blog"><img class="icon notion-page-icon" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63e89fe9-f5cd-4414-be0e-53d91aa54fc3%2Fme_small.jpg?table=block&amp;id=bd32b787-e471-49f3-8941-174a9c6846b6&amp;cache=v2" alt="Yihui He’s Blog" loading="lazy"/><span class="title">Yihui He’s Blog</span></a><span class="spacer">/</span><div class="breadcrumb active"><span class="title">ResNet on ImageNet with Caffe</span></div></div><div class="rhs"></div></div></header><div class="notion-page-scroller"><main class="notion-page notion-page-no-cover notion-page-no-icon notion-page-has-text-icon notion-full-page"><h1 class="notion-title">ResNet on ImageNet with Caffe</h1><div class="notion-page-content notion-page-content-has-aside notion-page-content-has-toc"><article class="notion-page-content-inner"><div class="notion-row"><a target="_blank" rel="noopener noreferrer" class="notion-bookmark notion-block-15d33ca1c272447eb6801c5695f557ef" href="https://github.com/yihui-he/resnet-imagenet-caffe"><div><div class="notion-bookmark-title">GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe</div><div class="notion-bookmark-description">You can&#x27;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session.</div><div class="notion-bookmark-link"><img src="https://github.com/favicon.ico" alt="GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe" loading="lazy"/><div>https://github.com/yihui-he/resnet-imagenet-caffe</div></div></div><div class="notion-bookmark-image"><img src="https://opengraph.githubassets.com/234a30d7d943e35e33dfcfa6569c9552b926da6b9dca4e7141d821581d2e3507/yihui-he/resnet-imagenet-caffe" alt="GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe" loading="lazy"/></div></a></div><div class="notion-text notion-block-ba6bc7a3fcc043e68758d2220845ac87">All models are trained on 4 GPUs with a minibatch size of 128. Testing is turned off during training due to memory limit(at least 12GB is require). The LMDB data is obtained from the <a target="_blank" rel="noopener noreferrer" class="notion-link" href="http://caffe.berkeleyvision.org/gathered/examples/imagenet.html">official caffe imagenet tutorial</a></div><div class="notion-text notion-block-7f934cd6c5f34be7be2de1b8004fc24c">To train a network, use train.sh. For example, train resnet-50 with gpu 0,1,2,3:</div><pre class="notion-code language-bash"><code class="language-bash"><span class="token comment">#set caffe path in train.sh</span>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      location.replace(
+        location.href.replace(
+          "https://yihui-he.github.io/blog/",
+          "https://yihui.dev/"
+        )
+      );
+    </script>
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      property="og:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta name="theme-color" content="#EB625A" />
+    <meta property="og:type" content="website" />
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-Y4TMBBH2RZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y4TMBBH2RZ", {
+        page_path: window.location.pathname,
+      });
+    </script>
+    <meta property="og:title" content="ResNet on ImageNet with Caffe" />
+    <meta property="og:site_name" content="Yihui He" />
+    <meta name="twitter:title" content="ResNet on ImageNet with Caffe" />
+    <meta property="twitter:domain" content="yihui-he.github.io" />
+    <meta name="twitter:creator" content="@he_yi_hui" />
+    <meta
+      name="description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta
+      property="og:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link
+      rel="canonical"
+      href="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"
+    />
+    <meta
+      property="og:url"
+      content="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"
+    />
+    <meta
+      property="twitter:url"
+      content="https://yihui-he.github.io/resnet-on-imagenet-with-caffe"
+    />
+    <title>ResNet on ImageNet with Caffe</title>
+    <meta name="next-head-count" content="21" />
+    <link
+      rel="preload"
+      href="/blog/_next/static/css/ce9b11b02642a9642d6d.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="/blog/_next/static/css/ce9b11b02642a9642d6d.css"
+      data-n-g=""
+    />
+    <link
+      rel="preload"
+      href="/blog/_next/static/css/4b67152b49ef8d389eef.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="/blog/_next/static/css/4b67152b49ef8d389eef.css"
+      data-n-p=""
+    />
+    <noscript data-n-css=""></noscript>
+    <script
+      defer=""
+      nomodule=""
+      src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/webpack-ed2d627650adadaab635.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/framework-c93ed74a065331c4bd75.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/main-0989120ac94443065aa9.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/pages/_app-e24568358f9b2ca9ee76.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/1bfc9850-762e4e08544c8bec659c.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/ae51ba48-7f31b5cf321fe3268476.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/d7eeaac4-07e2c37279f27c6f41bc.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/808-8e92cc1e8e3a13c0ecab.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/270-4b8341b0373202f07d27.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/pages/%5BpageId%5D-845d25c09c3d16569292.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_buildManifest.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_ssgManifest.js"
+      defer=""
+    ></script>
+  </head>
+  <body>
+    <script src="noflash.js"></script>
+    <div id="__next">
+      <div
+        class="notion notion-app light-mode notion-block-5f16dda4316e43afa4ea8fc6d6938404"
+      >
+        <div class="notion-viewport"></div>
+        <div class="notion-frame">
+          <header class="notion-header">
+            <div class="nav-header">
+              <div class="breadcrumbs">
+                <a class="breadcrumb" href="/blog"
+                  ><img
+                    class="icon notion-page-icon"
+                    src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63e89fe9-f5cd-4414-be0e-53d91aa54fc3%2Fme_small.jpg?table=block&amp;id=bd32b787-e471-49f3-8941-174a9c6846b6&amp;cache=v2"
+                    alt="Yihui He’s Blog"
+                    loading="lazy"
+                  /><span class="title">Yihui He’s Blog</span></a
+                ><span class="spacer">/</span>
+                <div class="breadcrumb active">
+                  <span class="title">ResNet on ImageNet with Caffe</span>
+                </div>
+              </div>
+              <div class="rhs"></div>
+            </div>
+          </header>
+          <div class="notion-page-scroller">
+            <main
+              class="notion-page notion-page-no-cover notion-page-no-icon notion-page-has-text-icon notion-full-page"
+            >
+              <h1 class="notion-title">ResNet on ImageNet with Caffe</h1>
+              <div
+                class="notion-page-content notion-page-content-has-aside notion-page-content-has-toc"
+              >
+                <article class="notion-page-content-inner">
+                  <div class="notion-row">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-bookmark notion-block-15d33ca1c272447eb6801c5695f557ef"
+                      href="https://github.com/yihui-he/resnet-imagenet-caffe"
+                      ><div>
+                        <div class="notion-bookmark-title">
+                          GitHub - yihui-he/resnet-imagenet-caffe: train resnet
+                          on imagenet from scratch with caffe
+                        </div>
+                        <div class="notion-bookmark-description">
+                          You can&#x27;t perform that action at this time. You
+                          signed in with another tab or window. You signed out
+                          in another tab or window. Reload to refresh your
+                          session. Reload to refresh your session.
+                        </div>
+                        <div class="notion-bookmark-link">
+                          <img
+                            src="https://github.com/favicon.ico"
+                            alt="GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe"
+                            loading="lazy"
+                          />
+                          <div>
+                            https://github.com/yihui-he/resnet-imagenet-caffe
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notion-bookmark-image">
+                        <img
+                          src="https://opengraph.githubassets.com/234a30d7d943e35e33dfcfa6569c9552b926da6b9dca4e7141d821581d2e3507/yihui-he/resnet-imagenet-caffe"
+                          alt="GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe"
+                          loading="lazy"
+                        /></div
+                    ></a>
+                  </div>
+                  <div
+                    class="notion-text notion-block-ba6bc7a3fcc043e68758d2220845ac87"
+                  >
+                    All models are trained on 4 GPUs with a minibatch size of
+                    128. Testing is turned off during training due to memory
+                    limit(at least 12GB is require). The LMDB data is obtained
+                    from the
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="http://caffe.berkeleyvision.org/gathered/examples/imagenet.html"
+                      >official caffe imagenet tutorial</a
+                    >
+                  </div>
+                  <div
+                    class="notion-text notion-block-7f934cd6c5f34be7be2de1b8004fc24c"
+                  >
+                    To train a network, use train.sh. For example, train
+                    resnet-50 with gpu 0,1,2,3:
+                  </div>
+                  <pre
+                    class="notion-code language-bash"
+                  ><code class="language-bash"><span class="token comment">#set caffe path in train.sh</span>
 <span class="token function">mkdir</span> resnet_50/logs
 <span class="token function">mkdir</span> resnet_50/snapshot
-./train.sh <span class="token number">0,1</span>,2,3 resnet_50 resnet_50_</code></pre><div class="notion-text notion-block-9c5a0435981f4a238c999a8d0e191f07"><b>For better training results, please install </b><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://github.com/yihui-he/caffe-pro"><b>my Caffe fork</b></a><b>, since the official Caffe ImageData layer doesn’t support original paper’s augmentation (resize shorter side to 256 then crop to 224x224). Use my 224x224 mean image </b><code class="notion-inline-code"><b>bgr.binaryproto</b></code><b> accordingly</b><b>See </b><code class="notion-inline-code"><b>resnet_50/ResNet-50-test.prototxt</b></code><b> ImageData layer for details</b></div><h4 class="notion-h notion-h3 notion-h-indent-0 notion-block-76bc1a88b2c44514b5a986509db04cd9" data-id="76bc1a88b2c44514b5a986509db04cd9"><span><div id="76bc1a88b2c44514b5a986509db04cd9" class="notion-header-anchor"></div><a class="notion-hash-link" href="#76bc1a88b2c44514b5a986509db04cd9" title="Citation"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">Citation</span></span></h4><div class="notion-text notion-block-14c3e9d59d9246dfbcc58931ccc5ead9">If you find the code useful in your research, please consider citing:</div><pre class="notion-code language-plain text"><code class="language-plain text">@InProceedings<span class="token punctuation">{</span>He_2017_ICCV<span class="token punctuation">,</span>
+./train.sh <span class="token number">0,1</span>,2,3 resnet_50 resnet_50_</code></pre>
+                  <div
+                    class="notion-text notion-block-9c5a0435981f4a238c999a8d0e191f07"
+                  >
+                    <b>For better training results, please install </b
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://github.com/yihui-he/caffe-pro"
+                      ><b>my Caffe fork</b></a
+                    ><b
+                      >, since the official Caffe ImageData layer doesn’t
+                      support original paper’s augmentation (resize shorter side
+                      to 256 then crop to 224x224). Use my 224x224 mean image </b
+                    ><code class="notion-inline-code"
+                      ><b>bgr.binaryproto</b></code
+                    ><b> accordingly</b><b>See </b
+                    ><code class="notion-inline-code"
+                      ><b>resnet_50/ResNet-50-test.prototxt</b></code
+                    ><b> ImageData layer for details</b>
+                  </div>
+                  <h4
+                    class="notion-h notion-h3 notion-h-indent-0 notion-block-76bc1a88b2c44514b5a986509db04cd9"
+                    data-id="76bc1a88b2c44514b5a986509db04cd9"
+                  >
+                    <span
+                      ><div
+                        id="76bc1a88b2c44514b5a986509db04cd9"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#76bc1a88b2c44514b5a986509db04cd9"
+                        title="Citation"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title">Citation</span></span
+                    >
+                  </h4>
+                  <div
+                    class="notion-text notion-block-14c3e9d59d9246dfbcc58931ccc5ead9"
+                  >
+                    If you find the code useful in your research, please
+                    consider citing:
+                  </div>
+                  <pre
+                    class="notion-code language-plain text"
+                  ><code class="language-plain text">@InProceedings<span class="token punctuation">{</span>He_2017_ICCV<span class="token punctuation">,</span>
 author <span class="token operator">=</span> <span class="token punctuation">{</span>He<span class="token punctuation">,</span> Yihui and Zhang<span class="token punctuation">,</span> Xiangyu and Sun<span class="token punctuation">,</span> Jian<span class="token punctuation">}</span><span class="token punctuation">,</span>
 title <span class="token operator">=</span> <span class="token punctuation">{</span>Channel Pruning <span class="token keyword">for</span> Accelerating Very Deep Neural Networks<span class="token punctuation">}</span><span class="token punctuation">,</span>
 booktitle <span class="token operator">=</span> <span class="token punctuation">{</span>The <span class="token constant">IEEE</span> International Conference on Computer <span class="token function">Vision</span> <span class="token punctuation">(</span><span class="token constant">ICCV</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 month <span class="token operator">=</span> <span class="token punctuation">{</span>Oct<span class="token punctuation">}</span><span class="token punctuation">,</span>
 year <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">2017</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h4 class="notion-h notion-h3 notion-h-indent-0 notion-block-0ce9012727a54ef68b16aeb06120d35e" data-id="0ce9012727a54ef68b16aeb06120d35e"><span><div id="0ce9012727a54ef68b16aeb06120d35e" class="notion-header-anchor"></div><a class="notion-hash-link" href="#0ce9012727a54ef68b16aeb06120d35e" title="resnet-50"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">resnet-50</span></span></h4><div class="notion-text notion-block-55cd84b2f8964bff91f9e826c294f561">use <code class="notion-inline-code">resnet_50/ResNet-50-test.prototxt</code> for training and validation</div><div class="notion-text notion-block-23d79b66c4f14a87ae39f01fc5a1a572">(new) We’ve release a <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://github.com/yihui-he/channel-pruning/releases/tag/ResNet-50-2X">2X accelerated ResNet-50</a> caffemodel using <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://github.com/yihui-he/channel-pruning">channel-pruning</a></div><div class="notion-row"><a target="_blank" rel="noopener noreferrer" class="notion-bookmark notion-block-d363a7850f5644ebac5a54d80203d7f1" href="https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks"><div><div class="notion-bookmark-title">yihui-he.github.io</div><div class="notion-bookmark-link"><div>https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks</div></div></div></a></div><h4 class="notion-h notion-h3 notion-h-indent-0 notion-block-159d5230364e425ea4c78924cbfd2caf" data-id="159d5230364e425ea4c78924cbfd2caf"><span><div id="159d5230364e425ea4c78924cbfd2caf" class="notion-header-anchor"></div><a class="notion-hash-link" href="#159d5230364e425ea4c78924cbfd2caf" title="resnet-32 This is a bottleneck architecture,"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">resnet-32 This is a bottleneck architecture,</span></span></h4><div class="notion-text notion-block-025c0f5c5afe476daf8e0bc40f865282">Since there’s no strong data augmentation and 10-crop test in caffe, the results maybe a bit low.</div><div class="notion-text notion-block-74dc839343794d488dad38a7e7e19d42">test accuracy: accuracy@1 = 0.67892, accuracy@5 = 0.88164</div><div class="notion-text notion-block-29538b7373ad44b588d2b112cf70f2c4">training loss for resnet-32 is shown below:</div><div class="notion-text notion-block-cdc0746ecb0a4e3288fb0fe48d807738">the trained model is provided in <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://github.com/yihui-he/resnet-imagenet-caffe/releases/download/v1.0/resnet_32_iter_750000.caffemodel">release</a></div><figure class="notion-asset-wrapper notion-asset-wrapper-image notion-block-ef8f5d2e6bed4765bbcaf146d94c45f5"><div style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"><img src="https://www.notion.so/image/https%3A%2F%2Fraw.githubusercontent.com%2Fyihui-he%2Fresnet-imagenet-caffe%2Fmaster%2Fresnet_32%2Floss.png?table=block&amp;id=ef8f5d2e-6bed-4765-bbca-f146d94c45f5&amp;cache=v2" loading="lazy" alt="notion image" decoding="async"/></div></figure><h4 class="notion-h notion-h3 notion-h-indent-0 notion-block-7f989bc4e7264c7faefede934246e62d" data-id="7f989bc4e7264c7faefede934246e62d"><span><div id="7f989bc4e7264c7faefede934246e62d" class="notion-header-anchor"></div><a class="notion-hash-link" href="#7f989bc4e7264c7faefede934246e62d" title="Other models on Caffe"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title">Other models on Caffe</span></span></h4><div class="notion-row"><a target="_blank" rel="noopener noreferrer" class="notion-bookmark notion-block-da139728ebd34bc889c16b0affc10f15" href="https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe"><div><div class="notion-bookmark-title">yihui-he.github.io</div><div class="notion-bookmark-link"><div>https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe</div></div></div></a></div><div class="notion-row"><a target="_blank" rel="noopener noreferrer" class="notion-bookmark notion-block-b8d0825c7d0c4387a0dabb9032cfb4b7" href="https://yihui-he.github.io/blog/xception-with-caffe"><div><div class="notion-bookmark-title">yihui-he.github.io</div><div class="notion-bookmark-link"><div>https://yihui-he.github.io/blog/xception-with-caffe</div></div></div></a></div></article><aside class="notion-aside"><div class="notion-aside-table-of-contents"><div class="notion-aside-table-of-contents-header">Table of Contents</div><nav class="notion-table-of-contents notion-gray"><a href="#76bc1a88b2c44514b5a986509db04cd9" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">Citation</span></a><a href="#0ce9012727a54ef68b16aeb06120d35e" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">resnet-50</span></a><a href="#159d5230364e425ea4c78924cbfd2caf" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">resnet-32 This is a bottleneck architecture,</span></a><a href="#7f989bc4e7264c7faefede934246e62d" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">Other models on Caffe</span></a></nav></div><div class="PageSocial_pageSocial__2WqHl"><a class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt" href="https://yihui-he.github.io" title="personal website" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt" href="https://twitter.com/he_yi_hui" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"></path></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_github__slQ0z" href="https://github.com/yihui-he" title="GitHub @yihui-he" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_linkedin__nElHT" href="https://www.linkedin.com/in/yihui-he-a4257aab" title="LinkedIn Yihui He" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"></path></svg></div></a></div></aside></div></main><footer class="styles_footer__1r_c6"><div class="styles_copyright__3kWHj">Copyright 2022 <!-- -->Yihui He</div><div class="styles_social__235gY"><a class="styles_twitter__WwfaA" href="https://yihui-he.github.io" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg></a><a class="styles_twitter__WwfaA" href="https://twitter.com/he_yi_hui" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a><a class="styles_github__32xIr" href="https://github.com/yihui-he" title="GitHub @yihui-he" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a><a class="styles_linkedin__1XGvB" href="https://www.linkedin.com/in/yihui-he-a4257aab" title="LinkedIn Yihui He" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></div></footer></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"site":{"domain":"yihui-he.github.io","name":"Yihui He","rootNotionPageId":"bd32b787e47149f38941174a9c6846b6","rootNotionSpaceId":null,"description":"Yihui He, AI research scientist / full stack engineer"},"recordMap":{"block":{"5f16dda4-316e-43af-a4ea-8fc6d6938404":{"role":"reader","value":{"id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","version":30,"type":"page","properties":{"title":[["ResNet on ImageNet with Caffe"]]},"content":["15d33ca1-c272-447e-b680-1c5695f557ef","ba6bc7a3-fcc0-43e6-8758-d2220845ac87","7f934cd6-c5f3-4be7-be2d-e1b8004fc24c","266ad2c0-603f-4af4-b3cf-247369e2b041","9c5a0435-981f-4a23-8c99-9a8d0e191f07","76bc1a88-b2c4-4514-b5a9-86509db04cd9","14c3e9d5-9d92-46df-bcc5-8931ccc5ead9","cd0d6a35-88f3-4a28-b021-07297ce6b6e5","0ce90127-27a5-4ef6-8b16-aeb06120d35e","55cd84b2-f896-4bff-91f9-e826c294f561","23d79b66-c4f1-4a87-ae39-f01fc5a1a572","d363a785-0f56-44eb-ac5a-54d80203d7f1","159d5230-364e-425e-a4c7-8924cbfd2caf","025c0f5c-5afe-476d-af8e-0bc40f865282","74dc8393-4379-4d48-8dad-38a7e7e19d42","29538b73-73ad-44b5-88d2-b112cf70f2c4","cdc0746e-cb0a-4e32-88fb-0fe48d807738","ef8f5d2e-6bed-4765-bbca-f146d94c45f5","7f989bc4-e726-4c7f-aefe-de934246e62d","da139728-ebd3-4bc8-89c1-6b0affc10f15","b8d0825c-7d0c-4387-a0da-bb9032cfb4b7"],"permissions":[{"role":"editor","type":"user_permission","user_id":"9e9c4442-4350-473a-b900-c954b0bd7a95"}],"created_time":1646017097062,"last_edited_time":1646017380000,"parent_id":"bd32b787-e471-49f3-8941-174a9c6846b6","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"bd32b787-e471-49f3-8941-174a9c6846b6":{"role":"reader","value":{"id":"bd32b787-e471-49f3-8941-174a9c6846b6","version":310,"type":"page","properties":{"title":[["Yihui He’s Blog"]]},"content":["cc62526f-e4eb-42e5-8e8f-a22c3abd7b46","eb534ff0-d0e6-4c83-b817-92c761ad9034","5d58a861-74df-4de4-b6cc-cb36b42072ab","9229117d-ca53-4eee-b43b-a1ecf09cccdf","07cdf7d1-24c9-4fd7-abc0-e1f79f38aafd","41249f3f-76a2-458a-b13d-2bc06310337b","09ac442d-d3b5-4f43-9531-90cdae7640b7","76f263cc-0736-4657-91dd-551b1c541b4c","fad54c70-af5c-42a3-a00a-ff18bea9c382","9abe926f-8b36-4a60-a77e-e5436690a8c0","84c674a7-bbe3-4ac5-88c7-68e0c3909585","09517098-a843-437e-bb7a-4ac67866b29b","e7a12f56-b48c-43bf-803e-96d70518685f","932f5707-ab83-4542-af11-68fec7b5f28d","e6311219-0ef8-4142-8a3f-eeedc910dd3b","5f16dda4-316e-43af-a4ea-8fc6d6938404","23859d82-2201-4bb6-a86a-db693ea4992a","d5a94597-8cb4-43be-a6d0-0840b5518710","c54caf49-d28c-46ac-b72d-fc9bfa58bbdd","4751172a-1cb9-4633-84d6-21ba334ee3d7","8e23ed11-04f5-48ab-a95d-1f47a5cd22af","4b2fb8ba-1e4c-47ff-903b-0869360db746","010faf71-b9e5-4c47-832a-658dafc6e7ae","3db8e8fd-7383-4aea-8beb-608282db050e","60ff1c6d-fde5-426d-ac57-7bba2a5296a2","31008559-3d6f-4c33-bb50-4e463c9b19fb","201efca9-ba21-47c3-8b0d-35b41dd3f91f","04ced6eb-ca82-46db-8f8e-077f3bf6b29c","daf31581-086b-4fb1-9695-5a79117d4300","a0487f2c-eed0-4154-a6e8-2366ca1d7939","95728d67-dc1f-4086-881b-1cd1bf72f985","cba2b20a-aa13-466c-bcb6-a9f9c9f057da","5e0b979d-ef00-44a3-894f-38d28cfd7576","38a364d6-720a-4788-aeee-c2b224745860","6a838606-233d-4584-b2f1-3d198b1603e8","f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","e8156bf2-5303-4590-a44a-6db1404c8c7b","2411768d-af34-4f88-8772-c46ca4428256","52357a78-3241-4a0a-bcb7-46bfd15070a4","3f4c64fb-75dc-4ccd-9e22-ce5704d0dfdb","d1ef1d4d-bfa8-40c4-a78c-037da96f3681","8d0bc47c-6aaf-4ac2-ae09-a6830f9ad50c","8f822963-88c4-4e82-8eac-8d0f8b606895","7c5f4cc9-b8a0-498e-8484-ccc1dbf41912","0ef9110d-6766-4f69-9412-586d40d755a9"],"discussions":["a13be18e-5008-4f8c-b07a-0fadb99d7450"],"format":{"page_icon":"https://s3-us-west-2.amazonaws.com/secure.notion-static.com/63e89fe9-f5cd-4414-be0e-53d91aa54fc3/me_small.jpg"},"permissions":[{"role":"editor","type":"user_permission","user_id":"9e9c4442-4350-473a-b900-c954b0bd7a95"},{"role":"reader","type":"public_permission","added_timestamp":1645466303668}],"created_time":1645422720000,"last_edited_time":1665526440000,"parent_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1","parent_table":"space","alive":true,"file_ids":["e3d85759-49f2-40d2-ba30-d25ca401872e","cfc564cc-91ae-4a96-a912-fcc9a28ec5db","63e89fe9-f5cd-4414-be0e-53d91aa54fc3"],"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"15d33ca1-c272-447e-b680-1c5695f557ef":{"role":"reader","value":{"id":"15d33ca1-c272-447e-b680-1c5695f557ef","version":8,"type":"bookmark","properties":{"link":[["https://github.com/yihui-he/resnet-imagenet-caffe"]],"title":[["GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe"]],"description":[["You can't perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."]]},"format":{"bookmark_icon":"https://github.com/favicon.ico","bookmark_cover":"https://opengraph.githubassets.com/234a30d7d943e35e33dfcfa6569c9552b926da6b9dca4e7141d821581d2e3507/yihui-he/resnet-imagenet-caffe"},"created_time":1646017116703,"last_edited_by":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_time":1646017080000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"ba6bc7a3-fcc0-43e6-8758-d2220845ac87":{"role":"reader","value":{"id":"ba6bc7a3-fcc0-43e6-8758-d2220845ac87","version":1,"type":"text","properties":{"title":[["All models are trained on 4 GPUs with a minibatch size of 128. Testing is turned off during training due to memory limit(at least 12GB is require). The LMDB data is obtained from the "],["official caffe imagenet tutorial",[["a","http://caffe.berkeleyvision.org/gathered/examples/imagenet.html"]]]]},"created_time":1646017097045,"last_edited_time":1646017097045,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"7f934cd6-c5f3-4be7-be2d-e1b8004fc24c":{"role":"reader","value":{"id":"7f934cd6-c5f3-4be7-be2d-e1b8004fc24c","version":1,"type":"text","properties":{"title":[["To train a network, use train.sh. For example, train resnet-50 with gpu 0,1,2,3:"]]},"created_time":1646017097045,"last_edited_time":1646017097045,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"266ad2c0-603f-4af4-b3cf-247369e2b041":{"role":"reader","value":{"id":"266ad2c0-603f-4af4-b3cf-247369e2b041","version":6,"type":"code","properties":{"title":[["#set caffe path in train.sh\nmkdir resnet_50/logs\nmkdir resnet_50/snapshot\n./train.sh 0,1,2,3 resnet_50 resnet_50_"]],"language":[["Bash"]]},"format":{"code_wrap":true},"created_time":1646017097046,"last_edited_time":1646017380000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"9c5a0435-981f-4a23-8c99-9a8d0e191f07":{"role":"reader","value":{"id":"9c5a0435-981f-4a23-8c99-9a8d0e191f07","version":1,"type":"text","properties":{"title":[["For better training results, please install ",[["b"]]],["my Caffe fork",[["b"],["a","https://github.com/yihui-he/caffe-pro"]]],[", since the official Caffe ImageData layer doesn’t support original paper’s augmentation (resize shorter side to 256 then crop to 224x224). Use my 224x224 mean image ",[["b"]]],["bgr.binaryproto",[["b"],["c"]]],[" accordingly",[["b"]]],["See ",[["b"]]],["resnet_50/ResNet-50-test.prototxt",[["b"],["c"]]],[" ImageData layer for details",[["b"]]]]},"created_time":1646017097048,"last_edited_time":1646017097048,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"76bc1a88-b2c4-4514-b5a9-86509db04cd9":{"role":"reader","value":{"id":"76bc1a88-b2c4-4514-b5a9-86509db04cd9","version":1,"type":"sub_sub_header","properties":{"title":[["Citation"]]},"created_time":1646017097048,"last_edited_time":1646017097048,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"14c3e9d5-9d92-46df-bcc5-8931ccc5ead9":{"role":"reader","value":{"id":"14c3e9d5-9d92-46df-bcc5-8931ccc5ead9","version":1,"type":"text","properties":{"title":[["If you find the code useful in your research, please consider citing:"]]},"created_time":1646017097049,"last_edited_time":1646017097049,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"cd0d6a35-88f3-4a28-b021-07297ce6b6e5":{"role":"reader","value":{"id":"cd0d6a35-88f3-4a28-b021-07297ce6b6e5","version":1,"type":"code","properties":{"title":[["@InProceedings{He_2017_ICCV,\nauthor = {He, Yihui and Zhang, Xiangyu and Sun, Jian},\ntitle = {Channel Pruning for Accelerating Very Deep Neural Networks},\nbooktitle = {The IEEE International Conference on Computer Vision (ICCV)},\nmonth = {Oct},\nyear = {2017}\n}"]],"language":[["Plain Text"]]},"format":{"code_wrap":true},"created_time":1646017097049,"last_edited_time":1646017097049,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"0ce90127-27a5-4ef6-8b16-aeb06120d35e":{"role":"reader","value":{"id":"0ce90127-27a5-4ef6-8b16-aeb06120d35e","version":1,"type":"sub_sub_header","properties":{"title":[["resnet-50"]]},"created_time":1646017097049,"last_edited_time":1646017097049,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"55cd84b2-f896-4bff-91f9-e826c294f561":{"role":"reader","value":{"id":"55cd84b2-f896-4bff-91f9-e826c294f561","version":14,"type":"text","properties":{"title":[["use "],["resnet_50/ResNet-50-test.prototxt",[["c"]]],[" for training and validation"]]},"created_time":1646017097050,"last_edited_time":1646017200000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"23d79b66-c4f1-4a87-ae39-f01fc5a1a572":{"role":"reader","value":{"id":"23d79b66-c4f1-4a87-ae39-f01fc5a1a572","version":6,"type":"text","properties":{"title":[["(new) We’ve release a "],["2X accelerated ResNet-50",[["a","https://github.com/yihui-he/channel-pruning/releases/tag/ResNet-50-2X"]]],[" caffemodel using "],["channel-pruning",[["a","https://github.com/yihui-he/channel-pruning"]]]]},"created_time":1646017097051,"last_edited_time":1646017200000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"d363a785-0f56-44eb-ac5a-54d80203d7f1":{"role":"reader","value":{"id":"d363a785-0f56-44eb-ac5a-54d80203d7f1","version":8,"type":"bookmark","properties":{"link":[["https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks"]]},"created_time":1646017200000,"last_edited_time":1646017200000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"159d5230-364e-425e-a4c7-8924cbfd2caf":{"role":"reader","value":{"id":"159d5230-364e-425e-a4c7-8924cbfd2caf","version":6,"type":"sub_sub_header","properties":{"title":[["resnet-32 This is a bottleneck architecture,"]]},"created_time":1646017097054,"last_edited_time":1646017140000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"025c0f5c-5afe-476d-af8e-0bc40f865282":{"role":"reader","value":{"id":"025c0f5c-5afe-476d-af8e-0bc40f865282","version":1,"type":"text","properties":{"title":[["Since there’s no strong data augmentation and 10-crop test in caffe, the results maybe a bit low."]]},"created_time":1646017097055,"last_edited_time":1646017097055,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"74dc8393-4379-4d48-8dad-38a7e7e19d42":{"role":"reader","value":{"id":"74dc8393-4379-4d48-8dad-38a7e7e19d42","version":1,"type":"text","properties":{"title":[["test accuracy: accuracy@1 = 0.67892, accuracy@5 = 0.88164"]]},"created_time":1646017097056,"last_edited_time":1646017097056,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"29538b73-73ad-44b5-88d2-b112cf70f2c4":{"role":"reader","value":{"id":"29538b73-73ad-44b5-88d2-b112cf70f2c4","version":1,"type":"text","properties":{"title":[["training loss for resnet-32 is shown below:"]]},"created_time":1646017097056,"last_edited_time":1646017097056,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"cdc0746e-cb0a-4e32-88fb-0fe48d807738":{"role":"reader","value":{"id":"cdc0746e-cb0a-4e32-88fb-0fe48d807738","version":4,"type":"text","properties":{"title":[["the trained model is provided in "],["release",[["a","https://github.com/yihui-he/resnet-imagenet-caffe/releases/download/v1.0/resnet_32_iter_750000.caffemodel"]]]]},"created_time":1646017097057,"last_edited_time":1646017200000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"ef8f5d2e-6bed-4765-bbca-f146d94c45f5":{"role":"reader","value":{"id":"ef8f5d2e-6bed-4765-bbca-f146d94c45f5","version":1,"type":"image","properties":{"source":[["https://raw.githubusercontent.com/yihui-he/resnet-imagenet-caffe/master/resnet_32/loss.png"]]},"created_time":1646017097059,"last_edited_time":1646017097059,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"7f989bc4-e726-4c7f-aefe-de934246e62d":{"role":"reader","value":{"id":"7f989bc4-e726-4c7f-aefe-de934246e62d","version":1,"type":"sub_sub_header","properties":{"title":[["Other models on Caffe"]]},"created_time":1646017097060,"last_edited_time":1646017097060,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"ignore_block_count":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"da139728-ebd3-4bc8-89c1-6b0affc10f15":{"role":"reader","value":{"id":"da139728-ebd3-4bc8-89c1-6b0affc10f15","version":8,"type":"bookmark","properties":{"link":[["https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe"]]},"created_time":1646017080000,"last_edited_time":1646017080000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"b8d0825c-7d0c-4387-a0da-bb9032cfb4b7":{"role":"reader","value":{"id":"b8d0825c-7d0c-4387-a0da-bb9032cfb4b7","version":8,"type":"bookmark","properties":{"link":[["https://yihui-he.github.io/blog/xception-with-caffe"]]},"created_time":1646017140000,"last_edited_time":1646017140000,"parent_id":"5f16dda4-316e-43af-a4ea-8fc6d6938404","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}}},"space":{},"discussion":{},"comment":{},"collection":{},"collection_view":{},"notion_user":{},"collection_query":{},"signed_urls":{},"preview_images":{}},"pageId":"5f16dda4-316e-43af-a4ea-8fc6d6938404"},"__N_SSG":true},"page":"/[pageId]","query":{"pageId":"resnet-on-imagenet-with-caffe"},"buildId":"SEeescF7W670MZeuakFMJ","assetPrefix":"/blog","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
+<span class="token punctuation">}</span></code></pre>
+                  <h4
+                    class="notion-h notion-h3 notion-h-indent-0 notion-block-0ce9012727a54ef68b16aeb06120d35e"
+                    data-id="0ce9012727a54ef68b16aeb06120d35e"
+                  >
+                    <span
+                      ><div
+                        id="0ce9012727a54ef68b16aeb06120d35e"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#0ce9012727a54ef68b16aeb06120d35e"
+                        title="resnet-50"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title">resnet-50</span></span
+                    >
+                  </h4>
+                  <div
+                    class="notion-text notion-block-55cd84b2f8964bff91f9e826c294f561"
+                  >
+                    use
+                    <code class="notion-inline-code"
+                      >resnet_50/ResNet-50-test.prototxt</code
+                    >
+                    for training and validation
+                  </div>
+                  <div
+                    class="notion-text notion-block-23d79b66c4f14a87ae39f01fc5a1a572"
+                  >
+                    (new) We’ve release a
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://github.com/yihui-he/channel-pruning/releases/tag/ResNet-50-2X"
+                      >2X accelerated ResNet-50</a
+                    >
+                    caffemodel using
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://github.com/yihui-he/channel-pruning"
+                      >channel-pruning</a
+                    >
+                  </div>
+                  <div class="notion-row">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-bookmark notion-block-d363a7850f5644ebac5a54d80203d7f1"
+                      href="https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks"
+                      ><div>
+                        <div class="notion-bookmark-title">
+                          yihui-he.github.io
+                        </div>
+                        <div class="notion-bookmark-link">
+                          <div>
+                            https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks
+                          </div>
+                        </div>
+                      </div></a
+                    >
+                  </div>
+                  <h4
+                    class="notion-h notion-h3 notion-h-indent-0 notion-block-159d5230364e425ea4c78924cbfd2caf"
+                    data-id="159d5230364e425ea4c78924cbfd2caf"
+                  >
+                    <span
+                      ><div
+                        id="159d5230364e425ea4c78924cbfd2caf"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#159d5230364e425ea4c78924cbfd2caf"
+                        title="resnet-32 This is a bottleneck architecture,"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title"
+                        >resnet-32 This is a bottleneck architecture,</span
+                      ></span
+                    >
+                  </h4>
+                  <div
+                    class="notion-text notion-block-025c0f5c5afe476daf8e0bc40f865282"
+                  >
+                    Since there’s no strong data augmentation and 10-crop test
+                    in caffe, the results maybe a bit low.
+                  </div>
+                  <div
+                    class="notion-text notion-block-74dc839343794d488dad38a7e7e19d42"
+                  >
+                    test accuracy: accuracy@1 = 0.67892, accuracy@5 = 0.88164
+                  </div>
+                  <div
+                    class="notion-text notion-block-29538b7373ad44b588d2b112cf70f2c4"
+                  >
+                    training loss for resnet-32 is shown below:
+                  </div>
+                  <div
+                    class="notion-text notion-block-cdc0746ecb0a4e3288fb0fe48d807738"
+                  >
+                    the trained model is provided in
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://github.com/yihui-he/resnet-imagenet-caffe/releases/download/v1.0/resnet_32_iter_750000.caffemodel"
+                      >release</a
+                    >
+                  </div>
+                  <figure
+                    class="notion-asset-wrapper notion-asset-wrapper-image notion-block-ef8f5d2e6bed4765bbcaf146d94c45f5"
+                  >
+                    <div
+                      style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"
+                    >
+                      <img
+                        src="https://www.notion.so/image/https%3A%2F%2Fraw.githubusercontent.com%2Fyihui-he%2Fresnet-imagenet-caffe%2Fmaster%2Fresnet_32%2Floss.png?table=block&amp;id=ef8f5d2e-6bed-4765-bbca-f146d94c45f5&amp;cache=v2"
+                        loading="lazy"
+                        alt="notion image"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                  <h4
+                    class="notion-h notion-h3 notion-h-indent-0 notion-block-7f989bc4e7264c7faefede934246e62d"
+                    data-id="7f989bc4e7264c7faefede934246e62d"
+                  >
+                    <span
+                      ><div
+                        id="7f989bc4e7264c7faefede934246e62d"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#7f989bc4e7264c7faefede934246e62d"
+                        title="Other models on Caffe"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title"
+                        >Other models on Caffe</span
+                      ></span
+                    >
+                  </h4>
+                  <div class="notion-row">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-bookmark notion-block-da139728ebd34bc889c16b0affc10f15"
+                      href="https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe"
+                      ><div>
+                        <div class="notion-bookmark-title">
+                          yihui-he.github.io
+                        </div>
+                        <div class="notion-bookmark-link">
+                          <div>
+                            https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe
+                          </div>
+                        </div>
+                      </div></a
+                    >
+                  </div>
+                  <div class="notion-row">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-bookmark notion-block-b8d0825c7d0c4387a0dabb9032cfb4b7"
+                      href="https://yihui-he.github.io/blog/xception-with-caffe"
+                      ><div>
+                        <div class="notion-bookmark-title">
+                          yihui-he.github.io
+                        </div>
+                        <div class="notion-bookmark-link">
+                          <div>
+                            https://yihui-he.github.io/blog/xception-with-caffe
+                          </div>
+                        </div>
+                      </div></a
+                    >
+                  </div>
+                </article>
+                <aside class="notion-aside">
+                  <div class="notion-aside-table-of-contents">
+                    <div class="notion-aside-table-of-contents-header">
+                      Table of Contents
+                    </div>
+                    <nav class="notion-table-of-contents notion-gray">
+                      <a
+                        href="#76bc1a88b2c44514b5a986509db04cd9"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >Citation</span
+                        ></a
+                      ><a
+                        href="#0ce9012727a54ef68b16aeb06120d35e"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >resnet-50</span
+                        ></a
+                      ><a
+                        href="#159d5230364e425ea4c78924cbfd2caf"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >resnet-32 This is a bottleneck architecture,</span
+                        ></a
+                      ><a
+                        href="#7f989bc4e7264c7faefede934246e62d"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >Other models on Caffe</span
+                        ></a
+                      >
+                    </nav>
+                  </div>
+                  <div class="PageSocial_pageSocial__2WqHl">
+                    <a
+                      class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt"
+                      href="https://yihui-he.github.io"
+                      title="personal website"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#000000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                          ></path>
+                          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt"
+                      href="https://twitter.com/he_yi_hui"
+                      title="Twitter @he_yi_hui"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"
+                          ></path>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_github__slQ0z"
+                      href="https://github.com/yihui-he"
+                      title="GitHub @yihui-he"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_linkedin__nElHT"
+                      href="https://www.linkedin.com/in/yihui-he-a4257aab"
+                      title="LinkedIn Yihui He"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"
+                          ></path>
+                        </svg></div
+                    ></a>
+                  </div>
+                </aside>
+              </div>
+            </main>
+            <footer class="styles_footer__1r_c6">
+              <div class="styles_copyright__3kWHj">
+                Copyright 2022
+                <!-- -->Yihui He
+              </div>
+              <div class="styles_social__235gY">
+                <a
+                  class="styles_twitter__WwfaA"
+                  href="https://yihui-he.github.io"
+                  title="Twitter @he_yi_hui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 576 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+                    ></path></svg></a
+                ><a
+                  class="styles_twitter__WwfaA"
+                  href="https://twitter.com/he_yi_hui"
+                  title="Twitter @he_yi_hui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 512 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                    ></path></svg></a
+                ><a
+                  class="styles_github__32xIr"
+                  href="https://github.com/yihui-he"
+                  title="GitHub @yihui-he"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 496 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+                    ></path></svg></a
+                ><a
+                  class="styles_linkedin__1XGvB"
+                  href="https://www.linkedin.com/in/yihui-he-a4257aab"
+                  title="LinkedIn Yihui He"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 448 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                    ></path></svg
+                ></a>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="__NEXT_DATA__" type="application/json">
+      {
+        "props": {
+          "pageProps": {
+            "site": {
+              "domain": "yihui-he.github.io",
+              "name": "Yihui He",
+              "rootNotionPageId": "bd32b787e47149f38941174a9c6846b6",
+              "rootNotionSpaceId": null,
+              "description": "Yihui He, AI research scientist / full stack engineer"
+            },
+            "recordMap": {
+              "block": {
+                "5f16dda4-316e-43af-a4ea-8fc6d6938404": {
+                  "role": "reader",
+                  "value": {
+                    "id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "version": 30,
+                    "type": "page",
+                    "properties": {
+                      "title": [["ResNet on ImageNet with Caffe"]]
+                    },
+                    "content": [
+                      "15d33ca1-c272-447e-b680-1c5695f557ef",
+                      "ba6bc7a3-fcc0-43e6-8758-d2220845ac87",
+                      "7f934cd6-c5f3-4be7-be2d-e1b8004fc24c",
+                      "266ad2c0-603f-4af4-b3cf-247369e2b041",
+                      "9c5a0435-981f-4a23-8c99-9a8d0e191f07",
+                      "76bc1a88-b2c4-4514-b5a9-86509db04cd9",
+                      "14c3e9d5-9d92-46df-bcc5-8931ccc5ead9",
+                      "cd0d6a35-88f3-4a28-b021-07297ce6b6e5",
+                      "0ce90127-27a5-4ef6-8b16-aeb06120d35e",
+                      "55cd84b2-f896-4bff-91f9-e826c294f561",
+                      "23d79b66-c4f1-4a87-ae39-f01fc5a1a572",
+                      "d363a785-0f56-44eb-ac5a-54d80203d7f1",
+                      "159d5230-364e-425e-a4c7-8924cbfd2caf",
+                      "025c0f5c-5afe-476d-af8e-0bc40f865282",
+                      "74dc8393-4379-4d48-8dad-38a7e7e19d42",
+                      "29538b73-73ad-44b5-88d2-b112cf70f2c4",
+                      "cdc0746e-cb0a-4e32-88fb-0fe48d807738",
+                      "ef8f5d2e-6bed-4765-bbca-f146d94c45f5",
+                      "7f989bc4-e726-4c7f-aefe-de934246e62d",
+                      "da139728-ebd3-4bc8-89c1-6b0affc10f15",
+                      "b8d0825c-7d0c-4387-a0da-bb9032cfb4b7"
+                    ],
+                    "permissions": [
+                      {
+                        "role": "editor",
+                        "type": "user_permission",
+                        "user_id": "9e9c4442-4350-473a-b900-c954b0bd7a95"
+                      }
+                    ],
+                    "created_time": 1646017097062,
+                    "last_edited_time": 1646017380000,
+                    "parent_id": "bd32b787-e471-49f3-8941-174a9c6846b6",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "bd32b787-e471-49f3-8941-174a9c6846b6": {
+                  "role": "reader",
+                  "value": {
+                    "id": "bd32b787-e471-49f3-8941-174a9c6846b6",
+                    "version": 310,
+                    "type": "page",
+                    "properties": { "title": [["Yihui He’s Blog"]] },
+                    "content": [
+                      "cc62526f-e4eb-42e5-8e8f-a22c3abd7b46",
+                      "eb534ff0-d0e6-4c83-b817-92c761ad9034",
+                      "5d58a861-74df-4de4-b6cc-cb36b42072ab",
+                      "9229117d-ca53-4eee-b43b-a1ecf09cccdf",
+                      "07cdf7d1-24c9-4fd7-abc0-e1f79f38aafd",
+                      "41249f3f-76a2-458a-b13d-2bc06310337b",
+                      "09ac442d-d3b5-4f43-9531-90cdae7640b7",
+                      "76f263cc-0736-4657-91dd-551b1c541b4c",
+                      "fad54c70-af5c-42a3-a00a-ff18bea9c382",
+                      "9abe926f-8b36-4a60-a77e-e5436690a8c0",
+                      "84c674a7-bbe3-4ac5-88c7-68e0c3909585",
+                      "09517098-a843-437e-bb7a-4ac67866b29b",
+                      "e7a12f56-b48c-43bf-803e-96d70518685f",
+                      "932f5707-ab83-4542-af11-68fec7b5f28d",
+                      "e6311219-0ef8-4142-8a3f-eeedc910dd3b",
+                      "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                      "23859d82-2201-4bb6-a86a-db693ea4992a",
+                      "d5a94597-8cb4-43be-a6d0-0840b5518710",
+                      "c54caf49-d28c-46ac-b72d-fc9bfa58bbdd",
+                      "4751172a-1cb9-4633-84d6-21ba334ee3d7",
+                      "8e23ed11-04f5-48ab-a95d-1f47a5cd22af",
+                      "4b2fb8ba-1e4c-47ff-903b-0869360db746",
+                      "010faf71-b9e5-4c47-832a-658dafc6e7ae",
+                      "3db8e8fd-7383-4aea-8beb-608282db050e",
+                      "60ff1c6d-fde5-426d-ac57-7bba2a5296a2",
+                      "31008559-3d6f-4c33-bb50-4e463c9b19fb",
+                      "201efca9-ba21-47c3-8b0d-35b41dd3f91f",
+                      "04ced6eb-ca82-46db-8f8e-077f3bf6b29c",
+                      "daf31581-086b-4fb1-9695-5a79117d4300",
+                      "a0487f2c-eed0-4154-a6e8-2366ca1d7939",
+                      "95728d67-dc1f-4086-881b-1cd1bf72f985",
+                      "cba2b20a-aa13-466c-bcb6-a9f9c9f057da",
+                      "5e0b979d-ef00-44a3-894f-38d28cfd7576",
+                      "38a364d6-720a-4788-aeee-c2b224745860",
+                      "6a838606-233d-4584-b2f1-3d198b1603e8",
+                      "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                      "e8156bf2-5303-4590-a44a-6db1404c8c7b",
+                      "2411768d-af34-4f88-8772-c46ca4428256",
+                      "52357a78-3241-4a0a-bcb7-46bfd15070a4",
+                      "3f4c64fb-75dc-4ccd-9e22-ce5704d0dfdb",
+                      "d1ef1d4d-bfa8-40c4-a78c-037da96f3681",
+                      "8d0bc47c-6aaf-4ac2-ae09-a6830f9ad50c",
+                      "8f822963-88c4-4e82-8eac-8d0f8b606895",
+                      "7c5f4cc9-b8a0-498e-8484-ccc1dbf41912",
+                      "0ef9110d-6766-4f69-9412-586d40d755a9"
+                    ],
+                    "discussions": ["a13be18e-5008-4f8c-b07a-0fadb99d7450"],
+                    "format": {
+                      "page_icon": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/63e89fe9-f5cd-4414-be0e-53d91aa54fc3/me_small.jpg"
+                    },
+                    "permissions": [
+                      {
+                        "role": "editor",
+                        "type": "user_permission",
+                        "user_id": "9e9c4442-4350-473a-b900-c954b0bd7a95"
+                      },
+                      {
+                        "role": "reader",
+                        "type": "public_permission",
+                        "added_timestamp": 1645466303668
+                      }
+                    ],
+                    "created_time": 1645422720000,
+                    "last_edited_time": 1665526440000,
+                    "parent_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1",
+                    "parent_table": "space",
+                    "alive": true,
+                    "file_ids": [
+                      "e3d85759-49f2-40d2-ba30-d25ca401872e",
+                      "cfc564cc-91ae-4a96-a912-fcc9a28ec5db",
+                      "63e89fe9-f5cd-4414-be0e-53d91aa54fc3"
+                    ],
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "15d33ca1-c272-447e-b680-1c5695f557ef": {
+                  "role": "reader",
+                  "value": {
+                    "id": "15d33ca1-c272-447e-b680-1c5695f557ef",
+                    "version": 8,
+                    "type": "bookmark",
+                    "properties": {
+                      "link": [
+                        ["https://github.com/yihui-he/resnet-imagenet-caffe"]
+                      ],
+                      "title": [
+                        [
+                          "GitHub - yihui-he/resnet-imagenet-caffe: train resnet on imagenet from scratch with caffe"
+                        ]
+                      ],
+                      "description": [
+                        [
+                          "You can't perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."
+                        ]
+                      ]
+                    },
+                    "format": {
+                      "bookmark_icon": "https://github.com/favicon.ico",
+                      "bookmark_cover": "https://opengraph.githubassets.com/234a30d7d943e35e33dfcfa6569c9552b926da6b9dca4e7141d821581d2e3507/yihui-he/resnet-imagenet-caffe"
+                    },
+                    "created_time": 1646017116703,
+                    "last_edited_by": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_time": 1646017080000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "ba6bc7a3-fcc0-43e6-8758-d2220845ac87": {
+                  "role": "reader",
+                  "value": {
+                    "id": "ba6bc7a3-fcc0-43e6-8758-d2220845ac87",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "All models are trained on 4 GPUs with a minibatch size of 128. Testing is turned off during training due to memory limit(at least 12GB is require). The LMDB data is obtained from the "
+                        ],
+                        [
+                          "official caffe imagenet tutorial",
+                          [
+                            [
+                              "a",
+                              "http://caffe.berkeleyvision.org/gathered/examples/imagenet.html"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097045,
+                    "last_edited_time": 1646017097045,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "7f934cd6-c5f3-4be7-be2d-e1b8004fc24c": {
+                  "role": "reader",
+                  "value": {
+                    "id": "7f934cd6-c5f3-4be7-be2d-e1b8004fc24c",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "To train a network, use train.sh. For example, train resnet-50 with gpu 0,1,2,3:"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097045,
+                    "last_edited_time": 1646017097045,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "266ad2c0-603f-4af4-b3cf-247369e2b041": {
+                  "role": "reader",
+                  "value": {
+                    "id": "266ad2c0-603f-4af4-b3cf-247369e2b041",
+                    "version": 6,
+                    "type": "code",
+                    "properties": {
+                      "title": [
+                        [
+                          "#set caffe path in train.sh\nmkdir resnet_50/logs\nmkdir resnet_50/snapshot\n./train.sh 0,1,2,3 resnet_50 resnet_50_"
+                        ]
+                      ],
+                      "language": [["Bash"]]
+                    },
+                    "format": { "code_wrap": true },
+                    "created_time": 1646017097046,
+                    "last_edited_time": 1646017380000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "9c5a0435-981f-4a23-8c99-9a8d0e191f07": {
+                  "role": "reader",
+                  "value": {
+                    "id": "9c5a0435-981f-4a23-8c99-9a8d0e191f07",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "For better training results, please install ",
+                          [["b"]]
+                        ],
+                        [
+                          "my Caffe fork",
+                          [
+                            ["b"],
+                            ["a", "https://github.com/yihui-he/caffe-pro"]
+                          ]
+                        ],
+                        [
+                          ", since the official Caffe ImageData layer doesn’t support original paper’s augmentation (resize shorter side to 256 then crop to 224x224). Use my 224x224 mean image ",
+                          [["b"]]
+                        ],
+                        ["bgr.binaryproto", [["b"], ["c"]]],
+                        [" accordingly", [["b"]]],
+                        ["See ", [["b"]]],
+                        ["resnet_50/ResNet-50-test.prototxt", [["b"], ["c"]]],
+                        [" ImageData layer for details", [["b"]]]
+                      ]
+                    },
+                    "created_time": 1646017097048,
+                    "last_edited_time": 1646017097048,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "76bc1a88-b2c4-4514-b5a9-86509db04cd9": {
+                  "role": "reader",
+                  "value": {
+                    "id": "76bc1a88-b2c4-4514-b5a9-86509db04cd9",
+                    "version": 1,
+                    "type": "sub_sub_header",
+                    "properties": { "title": [["Citation"]] },
+                    "created_time": 1646017097048,
+                    "last_edited_time": 1646017097048,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "14c3e9d5-9d92-46df-bcc5-8931ccc5ead9": {
+                  "role": "reader",
+                  "value": {
+                    "id": "14c3e9d5-9d92-46df-bcc5-8931ccc5ead9",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "If you find the code useful in your research, please consider citing:"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097049,
+                    "last_edited_time": 1646017097049,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "cd0d6a35-88f3-4a28-b021-07297ce6b6e5": {
+                  "role": "reader",
+                  "value": {
+                    "id": "cd0d6a35-88f3-4a28-b021-07297ce6b6e5",
+                    "version": 1,
+                    "type": "code",
+                    "properties": {
+                      "title": [
+                        [
+                          "@InProceedings{He_2017_ICCV,\nauthor = {He, Yihui and Zhang, Xiangyu and Sun, Jian},\ntitle = {Channel Pruning for Accelerating Very Deep Neural Networks},\nbooktitle = {The IEEE International Conference on Computer Vision (ICCV)},\nmonth = {Oct},\nyear = {2017}\n}"
+                        ]
+                      ],
+                      "language": [["Plain Text"]]
+                    },
+                    "format": { "code_wrap": true },
+                    "created_time": 1646017097049,
+                    "last_edited_time": 1646017097049,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "0ce90127-27a5-4ef6-8b16-aeb06120d35e": {
+                  "role": "reader",
+                  "value": {
+                    "id": "0ce90127-27a5-4ef6-8b16-aeb06120d35e",
+                    "version": 1,
+                    "type": "sub_sub_header",
+                    "properties": { "title": [["resnet-50"]] },
+                    "created_time": 1646017097049,
+                    "last_edited_time": 1646017097049,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "55cd84b2-f896-4bff-91f9-e826c294f561": {
+                  "role": "reader",
+                  "value": {
+                    "id": "55cd84b2-f896-4bff-91f9-e826c294f561",
+                    "version": 14,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["use "],
+                        ["resnet_50/ResNet-50-test.prototxt", [["c"]]],
+                        [" for training and validation"]
+                      ]
+                    },
+                    "created_time": 1646017097050,
+                    "last_edited_time": 1646017200000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "23d79b66-c4f1-4a87-ae39-f01fc5a1a572": {
+                  "role": "reader",
+                  "value": {
+                    "id": "23d79b66-c4f1-4a87-ae39-f01fc5a1a572",
+                    "version": 6,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["(new) We’ve release a "],
+                        [
+                          "2X accelerated ResNet-50",
+                          [
+                            [
+                              "a",
+                              "https://github.com/yihui-he/channel-pruning/releases/tag/ResNet-50-2X"
+                            ]
+                          ]
+                        ],
+                        [" caffemodel using "],
+                        [
+                          "channel-pruning",
+                          [["a", "https://github.com/yihui-he/channel-pruning"]]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097051,
+                    "last_edited_time": 1646017200000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "d363a785-0f56-44eb-ac5a-54d80203d7f1": {
+                  "role": "reader",
+                  "value": {
+                    "id": "d363a785-0f56-44eb-ac5a-54d80203d7f1",
+                    "version": 8,
+                    "type": "bookmark",
+                    "properties": {
+                      "link": [
+                        [
+                          "https://yihui-he.github.io/blog/channel-pruning-for-accelerating-very-deep-neural-networks"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017200000,
+                    "last_edited_time": 1646017200000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "159d5230-364e-425e-a4c7-8924cbfd2caf": {
+                  "role": "reader",
+                  "value": {
+                    "id": "159d5230-364e-425e-a4c7-8924cbfd2caf",
+                    "version": 6,
+                    "type": "sub_sub_header",
+                    "properties": {
+                      "title": [
+                        ["resnet-32 This is a bottleneck architecture,"]
+                      ]
+                    },
+                    "created_time": 1646017097054,
+                    "last_edited_time": 1646017140000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "025c0f5c-5afe-476d-af8e-0bc40f865282": {
+                  "role": "reader",
+                  "value": {
+                    "id": "025c0f5c-5afe-476d-af8e-0bc40f865282",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "Since there’s no strong data augmentation and 10-crop test in caffe, the results maybe a bit low."
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097055,
+                    "last_edited_time": 1646017097055,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "74dc8393-4379-4d48-8dad-38a7e7e19d42": {
+                  "role": "reader",
+                  "value": {
+                    "id": "74dc8393-4379-4d48-8dad-38a7e7e19d42",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "test accuracy: accuracy@1 = 0.67892, accuracy@5 = 0.88164"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097056,
+                    "last_edited_time": 1646017097056,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "29538b73-73ad-44b5-88d2-b112cf70f2c4": {
+                  "role": "reader",
+                  "value": {
+                    "id": "29538b73-73ad-44b5-88d2-b112cf70f2c4",
+                    "version": 1,
+                    "type": "text",
+                    "properties": {
+                      "title": [["training loss for resnet-32 is shown below:"]]
+                    },
+                    "created_time": 1646017097056,
+                    "last_edited_time": 1646017097056,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "cdc0746e-cb0a-4e32-88fb-0fe48d807738": {
+                  "role": "reader",
+                  "value": {
+                    "id": "cdc0746e-cb0a-4e32-88fb-0fe48d807738",
+                    "version": 4,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["the trained model is provided in "],
+                        [
+                          "release",
+                          [
+                            [
+                              "a",
+                              "https://github.com/yihui-he/resnet-imagenet-caffe/releases/download/v1.0/resnet_32_iter_750000.caffemodel"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097057,
+                    "last_edited_time": 1646017200000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "ef8f5d2e-6bed-4765-bbca-f146d94c45f5": {
+                  "role": "reader",
+                  "value": {
+                    "id": "ef8f5d2e-6bed-4765-bbca-f146d94c45f5",
+                    "version": 1,
+                    "type": "image",
+                    "properties": {
+                      "source": [
+                        [
+                          "https://raw.githubusercontent.com/yihui-he/resnet-imagenet-caffe/master/resnet_32/loss.png"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017097059,
+                    "last_edited_time": 1646017097059,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "7f989bc4-e726-4c7f-aefe-de934246e62d": {
+                  "role": "reader",
+                  "value": {
+                    "id": "7f989bc4-e726-4c7f-aefe-de934246e62d",
+                    "version": 1,
+                    "type": "sub_sub_header",
+                    "properties": { "title": [["Other models on Caffe"]] },
+                    "created_time": 1646017097060,
+                    "last_edited_time": 1646017097060,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "ignore_block_count": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "da139728-ebd3-4bc8-89c1-6b0affc10f15": {
+                  "role": "reader",
+                  "value": {
+                    "id": "da139728-ebd3-4bc8-89c1-6b0affc10f15",
+                    "version": 8,
+                    "type": "bookmark",
+                    "properties": {
+                      "link": [
+                        [
+                          "https://yihui-he.github.io/blog/resnet-on-cifar-10-with-caffe"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646017080000,
+                    "last_edited_time": 1646017080000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "b8d0825c-7d0c-4387-a0da-bb9032cfb4b7": {
+                  "role": "reader",
+                  "value": {
+                    "id": "b8d0825c-7d0c-4387-a0da-bb9032cfb4b7",
+                    "version": 8,
+                    "type": "bookmark",
+                    "properties": {
+                      "link": [
+                        ["https://yihui-he.github.io/blog/xception-with-caffe"]
+                      ]
+                    },
+                    "created_time": 1646017140000,
+                    "last_edited_time": 1646017140000,
+                    "parent_id": "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                }
+              },
+              "space": {},
+              "discussion": {},
+              "comment": {},
+              "collection": {},
+              "collection_view": {},
+              "notion_user": {},
+              "collection_query": {},
+              "signed_urls": {},
+              "preview_images": {}
+            },
+            "pageId": "5f16dda4-316e-43af-a4ea-8fc6d6938404"
+          },
+          "__N_SSG": true
+        },
+        "page": "/[pageId]",
+        "query": { "pageId": "resnet-on-imagenet-with-caffe" },
+        "buildId": "SEeescF7W670MZeuakFMJ",
+        "assetPrefix": "/blog",
+        "isFallback": false,
+        "gsp": true,
+        "scriptLoader": []
+      }
+    </script>
+  </body>
+</html>

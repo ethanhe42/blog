@@ -1,8 +1,1883 @@
-<!DOCTYPE html><html lang="en"><head><link rel="shortcut icon" href="/favicon.png"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="manifest" href="/manifest.json"/><meta charSet="utf-8"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta property="og:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="theme-color" content="#EB625A"/><meta property="og:type" content="website"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Y4TMBBH2RZ"></script><script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Y4TMBBH2RZ', {
-                page_path: window.location.pathname,
-              });
-          </script><meta property="og:title" content="狼人杀逻辑性"/><meta property="og:site_name" content="Yihui He"/><meta name="twitter:title" content="狼人杀逻辑性"/><meta property="twitter:domain" content="yihui-he.github.io"/><meta name="twitter:creator" content="@he_yi_hui"/><meta name="description" content="Yihui He, AI research scientist / full stack engineer"/><meta property="og:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="twitter:description" content="Yihui He, AI research scientist / full stack engineer"/><meta name="twitter:card" content="summary"/><link rel="canonical" href="https://yihui-he.github.io/狼人杀逻辑性"/><meta property="og:url" content="https://yihui-he.github.io/狼人杀逻辑性"/><meta property="twitter:url" content="https://yihui-he.github.io/狼人杀逻辑性"/><title>狼人杀逻辑性</title><meta name="next-head-count" content="21"/><link rel="preload" href="/blog/_next/static/css/ce9b11b02642a9642d6d.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/ce9b11b02642a9642d6d.css" data-n-g=""/><link rel="preload" href="/blog/_next/static/css/4b67152b49ef8d389eef.css" as="style"/><link rel="stylesheet" href="/blog/_next/static/css/4b67152b49ef8d389eef.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"></script><script src="/blog/_next/static/chunks/webpack-ed2d627650adadaab635.js" defer=""></script><script src="/blog/_next/static/chunks/framework-c93ed74a065331c4bd75.js" defer=""></script><script src="/blog/_next/static/chunks/main-0989120ac94443065aa9.js" defer=""></script><script src="/blog/_next/static/chunks/pages/_app-e24568358f9b2ca9ee76.js" defer=""></script><script src="/blog/_next/static/chunks/1bfc9850-762e4e08544c8bec659c.js" defer=""></script><script src="/blog/_next/static/chunks/ae51ba48-7f31b5cf321fe3268476.js" defer=""></script><script src="/blog/_next/static/chunks/d7eeaac4-07e2c37279f27c6f41bc.js" defer=""></script><script src="/blog/_next/static/chunks/808-8e92cc1e8e3a13c0ecab.js" defer=""></script><script src="/blog/_next/static/chunks/270-4b8341b0373202f07d27.js" defer=""></script><script src="/blog/_next/static/chunks/pages/%5BpageId%5D-845d25c09c3d16569292.js" defer=""></script><script src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_buildManifest.js" defer=""></script><script src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_ssgManifest.js" defer=""></script></head><body><script src="noflash.js"></script><div id="__next"><div class="notion notion-app light-mode notion-block-f93f1e88d8264cd3ab2acd92ddd2ac53"><div class="notion-viewport"></div><div class="notion-frame"><header class="notion-header"><div class="nav-header"><div class="breadcrumbs"><a class="breadcrumb" href="/blog"><img class="icon notion-page-icon" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63e89fe9-f5cd-4414-be0e-53d91aa54fc3%2Fme_small.jpg?table=block&amp;id=bd32b787-e471-49f3-8941-174a9c6846b6&amp;cache=v2" alt="Yihui He’s Blog" loading="lazy"/><span class="title">Yihui He’s Blog</span></a><span class="spacer">/</span><div class="breadcrumb active"><span class="title">狼人杀逻辑性</span></div></div><div class="rhs"></div></div></header><div class="notion-page-scroller"><main class="notion-page notion-page-no-cover notion-page-no-icon notion-page-has-text-icon notion-full-page"><h1 class="notion-title"><b><b>狼人杀逻辑性</b></b></h1><div class="notion-page-content notion-page-content-has-aside notion-page-content-has-toc"><article class="notion-page-content-inner"><div class="notion-callout notion-gray_background_co notion-block-d28cf6cee5654ee0addeb2878edfa737"><span class="notion-page-icon" role="img" aria-label="💡">💡</span><div class="notion-callout-text">只有<b>狼人村民预言家</b>的情况下，这个游戏<b>没有逻辑</b>，因为存在<b>固定的最优策略</b>。</div></div><div class="notion-text notion-block-caa06749dc5944a693a0dbe1139aa4dd">闲的无聊找了找关于狼人杀的学术论文，还真有人严谨的研究这玩意XD。由于12人预女猎守过于复杂，目前的research还停留在<b>狼人村民预言家</b>的setting下。</div><div class="notion-text notion-block-7199df2e67eb46de90e0af9650929473">下面分两种情况介绍，无预言家，有预言家：</div><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-83fda2456f28423780a42dffa46485be" data-id="83fda2456f28423780a42dffa46485be"><span><div id="83fda2456f28423780a42dffa46485be" class="notion-header-anchor"></div><a class="notion-hash-link" href="#83fda2456f28423780a42dffa46485be" title="情况1:无预言家"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title"><b>情况1:无预言家</b></span></span></h3><div class="notion-text notion-block-778aef863f9e4b78b9d7c148643fb498">这种情况下，村民的最优策略为，白天所有人统一随机投一个人，这样狼是少数无法左右投票结果。（如何做到统一且随机呢？每个人随机想一个数字，同时揭示这个数字，最终投票时，死的人是数字之和mod总人数）</div><div class="notion-text notion-block-1361e782c2bc4501a8c75dabab98d0d0">2010年的论文<em>A mathematical model of the Mafia game</em>提供了<b>胜率理论分析(exact formula)</b><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_1">[1]</a><b>。</b>直接上结论（n为总人数，m为狼的数量，w(n,m)为胜率）：</div><figure class="notion-asset-wrapper notion-asset-wrapper-image notion-block-5300d74648e54b31b22f86c531a1c95c"><div style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"><img src="https://www.notion.so/image/https%3A%2F%2Fwww.zhihu.com%2Fequation%3Ftex%3D%255Cbegin%257Balign%257D%2B%2B%2B%2B%2B%255Ctilde%257Bw%257D%2528n%252Cm%2529%2526%253D1-%255Ctilde%257Bp%257D_0%255Cleft%2528%255Cfrac%257Bn-1%257D%257B2%257D%255Cright%2529%253D1-%255Cleft%2528%2B1-%255Csqrt%257B1-%255Cfrac%257Bn-1%257D%257Bn%257D%257D%255Cright%2529%255Em%255C%255C%2B%2B%2B%2B%2B%2526%255Capprox%2B%255Cfrac%257Bm%257D%257B%255Csqrt%257Bn%257D%257D%2B%255Cend%257Balign%257D?table=block&amp;id=5300d746-48e5-4b31-b22f-86c531a1c95c&amp;cache=v2" loading="lazy" alt="notion image" decoding="async"/></div></figure><div class="notion-text notion-block-c7310f590d014c8797320a21cc9fd189">也就是说，胜率要想保持50%，总人数必须是狼的平方倍。比如4个狼，12个村民，总人数16。</div><figure class="notion-asset-wrapper notion-asset-wrapper-image notion-block-e14cfd8a784046de89055eb489389510"><div style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"><img src="https://www.notion.so/image/https%3A%2F%2Fpica.zhimg.com%2F80%2Fv2-d82e94774dc84c1c1fd6ee42864a8816_1440w.jpg%3Fsource%3D1940ef5c?table=block&amp;id=e14cfd8a-7840-46de-8905-5eb489389510&amp;cache=v2" loading="lazy" alt="notion image" decoding="async"/></div></figure><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-fa5ff76e36b54922ad5ad0fdfe110d2c" data-id="fa5ff76e36b54922ad5ad0fdfe110d2c"><span><div id="fa5ff76e36b54922ad5ad0fdfe110d2c" class="notion-header-anchor"></div><a class="notion-hash-link" href="#fa5ff76e36b54922ad5ad0fdfe110d2c" title="情况2:有预言家"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title"><b>情况2:有预言家</b></span></span></h3><div class="notion-text notion-block-c52853dea043454fa19b96f918a78940">在这篇Berkeley的paper中<a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_2">[2]</a>，作者考虑了预言家。与平时狼人杀不同的是，玩家死后身份会揭示（注意，如果不揭示身份，只是让游戏更随机，<a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/search?q=%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A954609292%7D">最优策略</a>会有nash equilibrium</div><div class="notion-text notion-block-f94b29262baa4185ae03b352157075ab">最优策略：</div><div class="notion-text notion-block-f7caf2ce70564c189115de83ca6dbb4e"><b>第一阶段：预言家还活着</b></div><ul class="notion-list notion-list-disc notion-block-b5307457fe6747d8b7588372e88d7c1a"><li>预言家随机验人，记录一份存活好人名单</li></ul><ul class="notion-list notion-list-disc notion-block-8ffbf06e5bbd49e593e162dba54e2666"><li>村民统一随机投死一个人</li></ul><div class="notion-text notion-block-a8e467c81e894ea88c8a5ce2a395c581"><b>第二阶段：存活好人名单超过存活玩家数量一半</b></div><ul class="notion-list notion-list-disc notion-block-a5f34caa5bc24a3783b1cb8164098c3f"><li>预言家公布自己的身份，并且公布存活好人名单</li></ul><ul class="notion-list notion-list-disc notion-block-f1162e7ac9864a7aa3c2271f3cc04317"><li>所有村民投票投死预言家，以验证他的身份真假（这也防止了狼人说自己是预言家，因为身份会揭示</li></ul><div class="notion-text notion-block-9704d79bf3084979a6fa43298990baba"><b>第三阶段：</b></div><ul class="notion-list notion-list-disc notion-block-8add957810c840ad90be899a2f161097"><li>名单上的好人统一投票名单外的人</li></ul><ul class="notion-list notion-list-disc notion-block-92a3cfc4693c494fa2449ef34c320783"><li>名单外的人放弃投票</li></ul><div class="notion-text notion-block-23cbfe083bc14944bf023a21bc80a126">有趣的是，作者还证明了，在有预言家的情况下，要想保持50%胜率，狼人数量应该与总人数线性相关（而不是情况1中的平方倍相关</div><div class="notion-text notion-block-39a09f800c3f4318a401605a6c337cc8">附上我读的其他狼人杀paper<a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_3">[3]</a><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_4">[4]</a><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_5">[5]</a><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_6">[6]</a><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_7">[7]</a>，我也真是闲哈哈哈</div><h3 class="notion-h notion-h2 notion-h-indent-0 notion-block-f54680f039f74845b7b8c6ea77749466" data-id="f54680f039f74845b7b8c6ea77749466"><span><div id="f54680f039f74845b7b8c6ea77749466" class="notion-header-anchor"></div><a class="notion-hash-link" href="#f54680f039f74845b7b8c6ea77749466" title="参考"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><span class="notion-h-title"><b>参考</b></span></span></h3><ol start="1" class="notion-list notion-list-numbered notion-block-199732a81d0543ce9ec2a5a2ec470717"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_1_0"><b>^</b></a>A mathematical model of the Mafia game <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://arxiv.org/pdf/1009.1031.pdf">https://arxiv.org/pdf/1009.1031.pdf</a></li></ol><ol start="2" class="notion-list notion-list-numbered notion-block-9966641b5b944841a7478fe8bc962682"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_2_0"><b>^</b></a>MAFIA: A THEORETICAL STUDY OF PLAYERS AND COALITIONS IN A PARTIAL INFORMATION ENVIRONMENT <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786">https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786</a></li></ol><ol start="3" class="notion-list notion-list-numbered notion-block-fd168d3ed6f14256a5e89081ba1a0a7c"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_3_0"><b>^</b></a>Development of Real-World Agent System for Werewolf Game <a target="_blank" rel="noopener noreferrer" class="notion-link" href="http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf">http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf</a></li></ol><ol start="4" class="notion-list notion-list-numbered notion-block-18caaa087a954343a60f5a9d5306bf73"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_4_0"><b>^</b></a>Development of Real-World Agent System for Werewolf Game <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf">https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf</a></li></ol><ol start="5" class="notion-list notion-list-numbered notion-block-30b69479bd4d4554be0aeb69e1d4557a"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_5_0"><b>^</b></a>Detecting deception in Computer Mediated Communication: A social structral perspective <a target="_blank" rel="noopener noreferrer" class="notion-link" href="http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y&amp;casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw">http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y&amp;casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw</a></li></ol><ol start="6" class="notion-list notion-list-numbered notion-block-3ad961c05e6a464e9ec6c2cd1fd12364"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_6_0"><b>^</b></a>A Study of AI Agent Commitment in One Night Ultimate Werewolf with Human Players <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092">https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092</a></li></ol><ol start="7" class="notion-list notion-list-numbered notion-block-1097d1948a254e268cfdf7f1e11539c8"><li><a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.zhihu.com/question/47863187/answer/954609292#ref_7_0"><b>^</b></a>Keeping the Story Straight: A Comparison of Commitment Strategies for a Social Deduction Game <a target="_blank" rel="noopener noreferrer" class="notion-link" href="https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218">https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218</a></li></ol></article><aside class="notion-aside"><div class="notion-aside-table-of-contents"><div class="notion-aside-table-of-contents-header">Table of Contents</div><nav class="notion-table-of-contents notion-gray"><a href="#83fda2456f28423780a42dffa46485be" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">情况1:无预言家</span></a><a href="#fa5ff76e36b54922ad5ad0fdfe110d2c" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">情况2:有预言家</span></a><a href="#f54680f039f74845b7b8c6ea77749466" class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"><span class="notion-table-of-contents-item-body" style="display:inline-block;margin-left:0">参考</span></a></nav></div><div class="PageSocial_pageSocial__2WqHl"><a class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt" href="https://yihui-he.github.io" title="personal website" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt" href="https://twitter.com/he_yi_hui" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"></path></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_github__slQ0z" href="https://github.com/yihui-he" title="GitHub @yihui-he" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></div></a><a class="PageSocial_action__2zgVt PageSocial_linkedin__nElHT" href="https://www.linkedin.com/in/yihui-he-a4257aab" title="LinkedIn Yihui He" target="_blank" rel="noopener noreferrer"><div class="PageSocial_actionBg__3CigO"><div class="PageSocial_actionBgPane__gbBkL"></div></div><div class="PageSocial_actionBg__3CigO"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"></path></svg></div></a></div></aside></div></main><footer class="styles_footer__1r_c6"><div class="styles_copyright__3kWHj">Copyright 2022 <!-- -->Yihui He</div><div class="styles_social__235gY"><a class="styles_twitter__WwfaA" href="https://yihui-he.github.io" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 576 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg></a><a class="styles_twitter__WwfaA" href="https://twitter.com/he_yi_hui" title="Twitter @he_yi_hui" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg></a><a class="styles_github__32xIr" href="https://github.com/yihui-he" title="GitHub @yihui-he" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a><a class="styles_linkedin__1XGvB" href="https://www.linkedin.com/in/yihui-he-a4257aab" title="LinkedIn Yihui He" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></div></footer></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"site":{"domain":"yihui-he.github.io","name":"Yihui He","rootNotionPageId":"bd32b787e47149f38941174a9c6846b6","rootNotionSpaceId":null,"description":"Yihui He, AI research scientist / full stack engineer"},"recordMap":{"block":{"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53":{"role":"reader","value":{"id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","version":35,"type":"page","properties":{"title":[["狼人杀逻辑性",[["b"],["b"]]]]},"content":["d28cf6ce-e565-4ee0-adde-b2878edfa737","caa06749-dc59-44a6-93a0-dbe1139aa4dd","7199df2e-67eb-46de-90e0-af9650929473","83fda245-6f28-4237-80a4-2dffa46485be","778aef86-3f9e-4b78-b9d7-c148643fb498","1361e782-c2bc-4501-a8c7-5dabab98d0d0","5300d746-48e5-4b31-b22f-86c531a1c95c","c7310f59-0d01-4c87-9732-0a21cc9fd189","e14cfd8a-7840-46de-8905-5eb489389510","fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c","c52853de-a043-454f-a19b-96f918a78940","f94b2926-2baa-4185-ae03-b352157075ab","f7caf2ce-7056-4c18-9115-de83ca6dbb4e","b5307457-fe67-47d8-b758-8372e88d7c1a","8ffbf06e-5bbd-49e5-93e1-62dba54e2666","a8e467c8-1e89-4ea8-8c8a-5ce2a395c581","a5f34caa-5bc2-4a37-83b1-cb8164098c3f","f1162e7a-c986-4a7a-a3c2-271f3cc04317","9704d79b-f308-4979-a6fa-43298990baba","8add9578-10c8-40ad-90be-899a2f161097","92a3cfc4-693c-494f-a244-9ef34c320783","23cbfe08-3bc1-4944-bf02-3a21bc80a126","39a09f80-0c3f-4318-a401-605a6c337cc8","f54680f0-39f7-4845-b7b8-c6ea77749466","199732a8-1d05-43ce-9ec2-a5a2ec470717","9966641b-5b94-4841-a747-8fe8bc962682","fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c","18caaa08-7a95-4343-a60f-5a9d5306bf73","30b69479-bd4d-4554-be0a-eb69e1d4557a","3ad961c0-5e6a-464e-9ec6-c2cd1fd12364","1097d194-8a25-4e26-8cfd-f7f1e11539c8"],"created_time":1646015940000,"last_edited_time":1646015940000,"parent_id":"bd32b787-e471-49f3-8941-174a9c6846b6","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"bd32b787-e471-49f3-8941-174a9c6846b6":{"role":"reader","value":{"id":"bd32b787-e471-49f3-8941-174a9c6846b6","version":310,"type":"page","properties":{"title":[["Yihui He’s Blog"]]},"content":["cc62526f-e4eb-42e5-8e8f-a22c3abd7b46","eb534ff0-d0e6-4c83-b817-92c761ad9034","5d58a861-74df-4de4-b6cc-cb36b42072ab","9229117d-ca53-4eee-b43b-a1ecf09cccdf","07cdf7d1-24c9-4fd7-abc0-e1f79f38aafd","41249f3f-76a2-458a-b13d-2bc06310337b","09ac442d-d3b5-4f43-9531-90cdae7640b7","76f263cc-0736-4657-91dd-551b1c541b4c","fad54c70-af5c-42a3-a00a-ff18bea9c382","9abe926f-8b36-4a60-a77e-e5436690a8c0","84c674a7-bbe3-4ac5-88c7-68e0c3909585","09517098-a843-437e-bb7a-4ac67866b29b","e7a12f56-b48c-43bf-803e-96d70518685f","932f5707-ab83-4542-af11-68fec7b5f28d","e6311219-0ef8-4142-8a3f-eeedc910dd3b","5f16dda4-316e-43af-a4ea-8fc6d6938404","23859d82-2201-4bb6-a86a-db693ea4992a","d5a94597-8cb4-43be-a6d0-0840b5518710","c54caf49-d28c-46ac-b72d-fc9bfa58bbdd","4751172a-1cb9-4633-84d6-21ba334ee3d7","8e23ed11-04f5-48ab-a95d-1f47a5cd22af","4b2fb8ba-1e4c-47ff-903b-0869360db746","010faf71-b9e5-4c47-832a-658dafc6e7ae","3db8e8fd-7383-4aea-8beb-608282db050e","60ff1c6d-fde5-426d-ac57-7bba2a5296a2","31008559-3d6f-4c33-bb50-4e463c9b19fb","201efca9-ba21-47c3-8b0d-35b41dd3f91f","04ced6eb-ca82-46db-8f8e-077f3bf6b29c","daf31581-086b-4fb1-9695-5a79117d4300","a0487f2c-eed0-4154-a6e8-2366ca1d7939","95728d67-dc1f-4086-881b-1cd1bf72f985","cba2b20a-aa13-466c-bcb6-a9f9c9f057da","5e0b979d-ef00-44a3-894f-38d28cfd7576","38a364d6-720a-4788-aeee-c2b224745860","6a838606-233d-4584-b2f1-3d198b1603e8","f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","e8156bf2-5303-4590-a44a-6db1404c8c7b","2411768d-af34-4f88-8772-c46ca4428256","52357a78-3241-4a0a-bcb7-46bfd15070a4","3f4c64fb-75dc-4ccd-9e22-ce5704d0dfdb","d1ef1d4d-bfa8-40c4-a78c-037da96f3681","8d0bc47c-6aaf-4ac2-ae09-a6830f9ad50c","8f822963-88c4-4e82-8eac-8d0f8b606895","7c5f4cc9-b8a0-498e-8484-ccc1dbf41912","0ef9110d-6766-4f69-9412-586d40d755a9"],"discussions":["a13be18e-5008-4f8c-b07a-0fadb99d7450"],"format":{"page_icon":"https://s3-us-west-2.amazonaws.com/secure.notion-static.com/63e89fe9-f5cd-4414-be0e-53d91aa54fc3/me_small.jpg"},"permissions":[{"role":"editor","type":"user_permission","user_id":"9e9c4442-4350-473a-b900-c954b0bd7a95"},{"role":"reader","type":"public_permission","added_timestamp":1645466303668}],"created_time":1645422720000,"last_edited_time":1665526440000,"parent_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1","parent_table":"space","alive":true,"file_ids":["e3d85759-49f2-40d2-ba30-d25ca401872e","cfc564cc-91ae-4a96-a912-fcc9a28ec5db","63e89fe9-f5cd-4414-be0e-53d91aa54fc3"],"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"d28cf6ce-e565-4ee0-adde-b2878edfa737":{"role":"reader","value":{"id":"d28cf6ce-e565-4ee0-adde-b2878edfa737","version":13,"type":"callout","properties":{"title":[["只有"],["狼人村民预言家",[["b"]]],["的情况下，这个游戏"],["没有逻辑",[["b"]]],["，因为存在"],["固定的最优策略",[["b"]]],["。"]]},"format":{"page_icon":"💡","block_color":"gray_background"},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"caa06749-dc59-44a6-93a0-dbe1139aa4dd":{"role":"reader","value":{"id":"caa06749-dc59-44a6-93a0-dbe1139aa4dd","version":2,"type":"text","properties":{"title":[["闲的无聊找了找关于狼人杀的学术论文，还真有人严谨的研究这玩意XD。由于12人预女猎守过于复杂，目前的research还停留在"],["狼人村民预言家",[["b"]]],["的setting下。"]]},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"7199df2e-67eb-46de-90e0-af9650929473":{"role":"reader","value":{"id":"7199df2e-67eb-46de-90e0-af9650929473","version":2,"type":"text","properties":{"title":[["下面分两种情况介绍，无预言家，有预言家："]]},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"83fda245-6f28-4237-80a4-2dffa46485be":{"role":"reader","value":{"id":"83fda245-6f28-4237-80a4-2dffa46485be","version":2,"type":"sub_header","properties":{"title":[["情况1:无预言家",[["b"]]]]},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"778aef86-3f9e-4b78-b9d7-c148643fb498":{"role":"reader","value":{"id":"778aef86-3f9e-4b78-b9d7-c148643fb498","version":2,"type":"text","properties":{"title":[["这种情况下，村民的最优策略为，白天所有人统一随机投一个人，这样狼是少数无法左右投票结果。（如何做到统一且随机呢？每个人随机想一个数字，同时揭示这个数字，最终投票时，死的人是数字之和mod总人数）"]]},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"1361e782-c2bc-4501-a8c7-5dabab98d0d0":{"role":"reader","value":{"id":"1361e782-c2bc-4501-a8c7-5dabab98d0d0","version":2,"type":"text","properties":{"title":[["2010年的论文"],["A mathematical model of the Mafia game",[["i"]]],["提供了"],["胜率理论分析(exact formula)",[["b"]]],["[1]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_1"]]],["。",[["b"]]],["直接上结论（n为总人数，m为狼的数量，w(n,m)为胜率）："]]},"created_time":1646015942610,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"5300d746-48e5-4b31-b22f-86c531a1c95c":{"role":"reader","value":{"id":"5300d746-48e5-4b31-b22f-86c531a1c95c","version":2,"type":"image","properties":{"source":[["https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+++++%5Ctilde%7Bw%7D%28n%2Cm%29%26%3D1-%5Ctilde%7Bp%7D_0%5Cleft%28%5Cfrac%7Bn-1%7D%7B2%7D%5Cright%29%3D1-%5Cleft%28+1-%5Csqrt%7B1-%5Cfrac%7Bn-1%7D%7Bn%7D%7D%5Cright%29%5Em%5C%5C+++++%26%5Capprox+%5Cfrac%7Bm%7D%7B%5Csqrt%7Bn%7D%7D+%5Cend%7Balign%7D"]]},"created_time":1646015942611,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"c7310f59-0d01-4c87-9732-0a21cc9fd189":{"role":"reader","value":{"id":"c7310f59-0d01-4c87-9732-0a21cc9fd189","version":2,"type":"text","properties":{"title":[["也就是说，胜率要想保持50%，总人数必须是狼的平方倍。比如4个狼，12个村民，总人数16。"]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"e14cfd8a-7840-46de-8905-5eb489389510":{"role":"reader","value":{"id":"e14cfd8a-7840-46de-8905-5eb489389510","version":2,"type":"image","properties":{"source":[["https://pica.zhimg.com/80/v2-d82e94774dc84c1c1fd6ee42864a8816_1440w.jpg?source=1940ef5c"]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c":{"role":"reader","value":{"id":"fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c","version":2,"type":"sub_header","properties":{"title":[["情况2:有预言家",[["b"]]]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"c52853de-a043-454f-a19b-96f918a78940":{"role":"reader","value":{"id":"c52853de-a043-454f-a19b-96f918a78940","version":2,"type":"text","properties":{"title":[["在这篇Berkeley的paper中"],["[2]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_2"]]],["，作者考虑了预言家。与平时狼人杀不同的是，玩家死后身份会揭示（注意，如果不揭示身份，只是让游戏更随机，"],["最优策略",[["a","https://www.zhihu.com/search?q=%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5\u0026search_source=Entity\u0026hybrid_search_source=Entity\u0026hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A954609292%7D"]]],["会有nash equilibrium"]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"f94b2926-2baa-4185-ae03-b352157075ab":{"role":"reader","value":{"id":"f94b2926-2baa-4185-ae03-b352157075ab","version":2,"type":"text","properties":{"title":[["最优策略："]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"f7caf2ce-7056-4c18-9115-de83ca6dbb4e":{"role":"reader","value":{"id":"f7caf2ce-7056-4c18-9115-de83ca6dbb4e","version":2,"type":"text","properties":{"title":[["第一阶段：预言家还活着",[["b"]]]]},"created_time":1646015942612,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"b5307457-fe67-47d8-b758-8372e88d7c1a":{"role":"reader","value":{"id":"b5307457-fe67-47d8-b758-8372e88d7c1a","version":2,"type":"bulleted_list","properties":{"title":[["预言家随机验人，记录一份存活好人名单"]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"8ffbf06e-5bbd-49e5-93e1-62dba54e2666":{"role":"reader","value":{"id":"8ffbf06e-5bbd-49e5-93e1-62dba54e2666","version":2,"type":"bulleted_list","properties":{"title":[["村民统一随机投死一个人"]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"a8e467c8-1e89-4ea8-8c8a-5ce2a395c581":{"role":"reader","value":{"id":"a8e467c8-1e89-4ea8-8c8a-5ce2a395c581","version":2,"type":"text","properties":{"title":[["第二阶段：存活好人名单超过存活玩家数量一半",[["b"]]]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"a5f34caa-5bc2-4a37-83b1-cb8164098c3f":{"role":"reader","value":{"id":"a5f34caa-5bc2-4a37-83b1-cb8164098c3f","version":2,"type":"bulleted_list","properties":{"title":[["预言家公布自己的身份，并且公布存活好人名单"]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"f1162e7a-c986-4a7a-a3c2-271f3cc04317":{"role":"reader","value":{"id":"f1162e7a-c986-4a7a-a3c2-271f3cc04317","version":2,"type":"bulleted_list","properties":{"title":[["所有村民投票投死预言家，以验证他的身份真假（这也防止了狼人说自己是预言家，因为身份会揭示"]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"9704d79b-f308-4979-a6fa-43298990baba":{"role":"reader","value":{"id":"9704d79b-f308-4979-a6fa-43298990baba","version":2,"type":"text","properties":{"title":[["第三阶段：",[["b"]]]]},"created_time":1646015942613,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"8add9578-10c8-40ad-90be-899a2f161097":{"role":"reader","value":{"id":"8add9578-10c8-40ad-90be-899a2f161097","version":2,"type":"bulleted_list","properties":{"title":[["名单上的好人统一投票名单外的人"]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"92a3cfc4-693c-494f-a244-9ef34c320783":{"role":"reader","value":{"id":"92a3cfc4-693c-494f-a244-9ef34c320783","version":2,"type":"bulleted_list","properties":{"title":[["名单外的人放弃投票"]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"23cbfe08-3bc1-4944-bf02-3a21bc80a126":{"role":"reader","value":{"id":"23cbfe08-3bc1-4944-bf02-3a21bc80a126","version":2,"type":"text","properties":{"title":[["有趣的是，作者还证明了，在有预言家的情况下，要想保持50%胜率，狼人数量应该与总人数线性相关（而不是情况1中的平方倍相关"]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"39a09f80-0c3f-4318-a401-605a6c337cc8":{"role":"reader","value":{"id":"39a09f80-0c3f-4318-a401-605a6c337cc8","version":2,"type":"text","properties":{"title":[["附上我读的其他狼人杀paper"],["[3]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_3"]]],["[4]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_4"]]],["[5]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_5"]]],["[6]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_6"]]],["[7]",[["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_7"]]],["，我也真是闲哈哈哈"]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"f54680f0-39f7-4845-b7b8-c6ea77749466":{"role":"reader","value":{"id":"f54680f0-39f7-4845-b7b8-c6ea77749466","version":2,"type":"sub_header","properties":{"title":[["参考",[["b"]]]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"199732a8-1d05-43ce-9ec2-a5a2ec470717":{"role":"reader","value":{"id":"199732a8-1d05-43ce-9ec2-a5a2ec470717","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_1_0"]]],["A mathematical model of the Mafia game "],["https://arxiv.org/pdf/1009.1031.pdf",[["a","https://arxiv.org/pdf/1009.1031.pdf"]]]]},"created_time":1646015942614,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"9966641b-5b94-4841-a747-8fe8bc962682":{"role":"reader","value":{"id":"9966641b-5b94-4841-a747-8fe8bc962682","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_2_0"]]],["MAFIA: A THEORETICAL STUDY OF PLAYERS AND COALITIONS IN A PARTIAL INFORMATION ENVIRONMENT "],["https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786",[["a","https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786"]]]]},"created_time":1646015942615,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c":{"role":"reader","value":{"id":"fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_3_0"]]],["Development of Real-World Agent System for Werewolf Game "],["http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf",[["a","http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf"]]]]},"created_time":1646015942615,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"18caaa08-7a95-4343-a60f-5a9d5306bf73":{"role":"reader","value":{"id":"18caaa08-7a95-4343-a60f-5a9d5306bf73","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_4_0"]]],["Development of Real-World Agent System for Werewolf Game "],["https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf",[["a","https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf"]]]]},"created_time":1646015942616,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"30b69479-bd4d-4554-be0a-eb69e1d4557a":{"role":"reader","value":{"id":"30b69479-bd4d-4554-be0a-eb69e1d4557a","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_5_0"]]],["Detecting deception in Computer Mediated Communication: A social structral perspective "],["http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar\u0026cbl=18750\u0026diss=y\u0026casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw",[["a","http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar\u0026cbl=18750\u0026diss=y\u0026casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw"]]]]},"created_time":1646015942616,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"3ad961c0-5e6a-464e-9ec6-c2cd1fd12364":{"role":"reader","value":{"id":"3ad961c0-5e6a-464e-9ec6-c2cd1fd12364","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_6_0"]]],["A Study of AI Agent Commitment in One Night Ultimate Werewolf with Human Players "],["https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092",[["a","https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092"]]]]},"created_time":1646015942616,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}},"1097d194-8a25-4e26-8cfd-f7f1e11539c8":{"role":"reader","value":{"id":"1097d194-8a25-4e26-8cfd-f7f1e11539c8","version":2,"type":"numbered_list","properties":{"title":[["^",[["b"],["a","https://www.zhihu.com/question/47863187/answer/954609292#ref_7_0"]]],["Keeping the Story Straight: A Comparison of Commitment Strategies for a Social Deduction Game "],["https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218",[["a","https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218"]]]]},"created_time":1646015942617,"last_edited_time":1646015940000,"parent_id":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53","parent_table":"block","alive":true,"created_by_table":"notion_user","created_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","last_edited_by_table":"notion_user","last_edited_by_id":"9e9c4442-4350-473a-b900-c954b0bd7a95","space_id":"bb9288f4-efb5-417f-bf44-1a79fa04feb1"}}},"space":{},"discussion":{},"comment":{},"collection":{},"collection_view":{},"notion_user":{},"collection_query":{},"signed_urls":{},"preview_images":{}},"pageId":"f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53"},"__N_SSG":true},"page":"/[pageId]","query":{"pageId":"狼人杀逻辑性"},"buildId":"SEeescF7W670MZeuakFMJ","assetPrefix":"/blog","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      location.replace(
+        location.href.replace(
+          "https://yihui-he.github.io/blog/",
+          "https://yihui.dev/"
+        )
+      );
+    </script>
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      property="og:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta name="theme-color" content="#EB625A" />
+    <meta property="og:type" content="website" />
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=G-Y4TMBBH2RZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Y4TMBBH2RZ", {
+        page_path: window.location.pathname,
+      });
+    </script>
+    <meta property="og:title" content="狼人杀逻辑性" />
+    <meta property="og:site_name" content="Yihui He" />
+    <meta name="twitter:title" content="狼人杀逻辑性" />
+    <meta property="twitter:domain" content="yihui-he.github.io" />
+    <meta name="twitter:creator" content="@he_yi_hui" />
+    <meta
+      name="description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta
+      property="og:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Yihui He, AI research scientist / full stack engineer"
+    />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://yihui-he.github.io/狼人杀逻辑性" />
+    <meta property="og:url" content="https://yihui-he.github.io/狼人杀逻辑性" />
+    <meta
+      property="twitter:url"
+      content="https://yihui-he.github.io/狼人杀逻辑性"
+    />
+    <title>狼人杀逻辑性</title>
+    <meta name="next-head-count" content="21" />
+    <link
+      rel="preload"
+      href="/blog/_next/static/css/ce9b11b02642a9642d6d.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="/blog/_next/static/css/ce9b11b02642a9642d6d.css"
+      data-n-g=""
+    />
+    <link
+      rel="preload"
+      href="/blog/_next/static/css/4b67152b49ef8d389eef.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="/blog/_next/static/css/4b67152b49ef8d389eef.css"
+      data-n-p=""
+    />
+    <noscript data-n-css=""></noscript>
+    <script
+      defer=""
+      nomodule=""
+      src="/blog/_next/static/chunks/polyfills-a40ef1678bae11e696dba45124eadd70.js"
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/webpack-ed2d627650adadaab635.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/framework-c93ed74a065331c4bd75.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/main-0989120ac94443065aa9.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/pages/_app-e24568358f9b2ca9ee76.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/1bfc9850-762e4e08544c8bec659c.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/ae51ba48-7f31b5cf321fe3268476.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/d7eeaac4-07e2c37279f27c6f41bc.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/808-8e92cc1e8e3a13c0ecab.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/270-4b8341b0373202f07d27.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/chunks/pages/%5BpageId%5D-845d25c09c3d16569292.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_buildManifest.js"
+      defer=""
+    ></script>
+    <script
+      src="/blog/_next/static/SEeescF7W670MZeuakFMJ/_ssgManifest.js"
+      defer=""
+    ></script>
+  </head>
+  <body>
+    <script src="noflash.js"></script>
+    <div id="__next">
+      <div
+        class="notion notion-app light-mode notion-block-f93f1e88d8264cd3ab2acd92ddd2ac53"
+      >
+        <div class="notion-viewport"></div>
+        <div class="notion-frame">
+          <header class="notion-header">
+            <div class="nav-header">
+              <div class="breadcrumbs">
+                <a class="breadcrumb" href="/blog"
+                  ><img
+                    class="icon notion-page-icon"
+                    src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F63e89fe9-f5cd-4414-be0e-53d91aa54fc3%2Fme_small.jpg?table=block&amp;id=bd32b787-e471-49f3-8941-174a9c6846b6&amp;cache=v2"
+                    alt="Yihui He’s Blog"
+                    loading="lazy"
+                  /><span class="title">Yihui He’s Blog</span></a
+                ><span class="spacer">/</span>
+                <div class="breadcrumb active">
+                  <span class="title">狼人杀逻辑性</span>
+                </div>
+              </div>
+              <div class="rhs"></div>
+            </div>
+          </header>
+          <div class="notion-page-scroller">
+            <main
+              class="notion-page notion-page-no-cover notion-page-no-icon notion-page-has-text-icon notion-full-page"
+            >
+              <h1 class="notion-title">
+                <b><b>狼人杀逻辑性</b></b>
+              </h1>
+              <div
+                class="notion-page-content notion-page-content-has-aside notion-page-content-has-toc"
+              >
+                <article class="notion-page-content-inner">
+                  <div
+                    class="notion-callout notion-gray_background_co notion-block-d28cf6cee5654ee0addeb2878edfa737"
+                  >
+                    <span class="notion-page-icon" role="img" aria-label="💡"
+                      >💡</span
+                    >
+                    <div class="notion-callout-text">
+                      只有<b>狼人村民预言家</b>的情况下，这个游戏<b>没有逻辑</b>，因为存在<b>固定的最优策略</b>。
+                    </div>
+                  </div>
+                  <div
+                    class="notion-text notion-block-caa06749dc5944a693a0dbe1139aa4dd"
+                  >
+                    闲的无聊找了找关于狼人杀的学术论文，还真有人严谨的研究这玩意XD。由于12人预女猎守过于复杂，目前的research还停留在<b>狼人村民预言家</b>的setting下。
+                  </div>
+                  <div
+                    class="notion-text notion-block-7199df2e67eb46de90e0af9650929473"
+                  >
+                    下面分两种情况介绍，无预言家，有预言家：
+                  </div>
+                  <h3
+                    class="notion-h notion-h2 notion-h-indent-0 notion-block-83fda2456f28423780a42dffa46485be"
+                    data-id="83fda2456f28423780a42dffa46485be"
+                  >
+                    <span
+                      ><div
+                        id="83fda2456f28423780a42dffa46485be"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#83fda2456f28423780a42dffa46485be"
+                        title="情况1:无预言家"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title"
+                        ><b>情况1:无预言家</b></span
+                      ></span
+                    >
+                  </h3>
+                  <div
+                    class="notion-text notion-block-778aef863f9e4b78b9d7c148643fb498"
+                  >
+                    这种情况下，村民的最优策略为，白天所有人统一随机投一个人，这样狼是少数无法左右投票结果。（如何做到统一且随机呢？每个人随机想一个数字，同时揭示这个数字，最终投票时，死的人是数字之和mod总人数）
+                  </div>
+                  <div
+                    class="notion-text notion-block-1361e782c2bc4501a8c75dabab98d0d0"
+                  >
+                    2010年的论文<em>A mathematical model of the Mafia game</em
+                    >提供了<b>胜率理论分析(exact formula)</b
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_1"
+                      >[1]</a
+                    ><b>。</b
+                    >直接上结论（n为总人数，m为狼的数量，w(n,m)为胜率）：
+                  </div>
+                  <figure
+                    class="notion-asset-wrapper notion-asset-wrapper-image notion-block-5300d74648e54b31b22f86c531a1c95c"
+                  >
+                    <div
+                      style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"
+                    >
+                      <img
+                        src="https://www.notion.so/image/https%3A%2F%2Fwww.zhihu.com%2Fequation%3Ftex%3D%255Cbegin%257Balign%257D%2B%2B%2B%2B%2B%255Ctilde%257Bw%257D%2528n%252Cm%2529%2526%253D1-%255Ctilde%257Bp%257D_0%255Cleft%2528%255Cfrac%257Bn-1%257D%257B2%257D%255Cright%2529%253D1-%255Cleft%2528%2B1-%255Csqrt%257B1-%255Cfrac%257Bn-1%257D%257Bn%257D%257D%255Cright%2529%255Em%255C%255C%2B%2B%2B%2B%2B%2526%255Capprox%2B%255Cfrac%257Bm%257D%257B%255Csqrt%257Bn%257D%257D%2B%255Cend%257Balign%257D?table=block&amp;id=5300d746-48e5-4b31-b22f-86c531a1c95c&amp;cache=v2"
+                        loading="lazy"
+                        alt="notion image"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                  <div
+                    class="notion-text notion-block-c7310f590d014c8797320a21cc9fd189"
+                  >
+                    也就是说，胜率要想保持50%，总人数必须是狼的平方倍。比如4个狼，12个村民，总人数16。
+                  </div>
+                  <figure
+                    class="notion-asset-wrapper notion-asset-wrapper-image notion-block-e14cfd8a784046de89055eb489389510"
+                  >
+                    <div
+                      style="position:relative;display:flex;justify-content:center;align-self:center;width:100%;max-width:100%;flex-direction:column"
+                    >
+                      <img
+                        src="https://www.notion.so/image/https%3A%2F%2Fpica.zhimg.com%2F80%2Fv2-d82e94774dc84c1c1fd6ee42864a8816_1440w.jpg%3Fsource%3D1940ef5c?table=block&amp;id=e14cfd8a-7840-46de-8905-5eb489389510&amp;cache=v2"
+                        loading="lazy"
+                        alt="notion image"
+                        decoding="async"
+                      />
+                    </div>
+                  </figure>
+                  <h3
+                    class="notion-h notion-h2 notion-h-indent-0 notion-block-fa5ff76e36b54922ad5ad0fdfe110d2c"
+                    data-id="fa5ff76e36b54922ad5ad0fdfe110d2c"
+                  >
+                    <span
+                      ><div
+                        id="fa5ff76e36b54922ad5ad0fdfe110d2c"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#fa5ff76e36b54922ad5ad0fdfe110d2c"
+                        title="情况2:有预言家"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title"
+                        ><b>情况2:有预言家</b></span
+                      ></span
+                    >
+                  </h3>
+                  <div
+                    class="notion-text notion-block-c52853dea043454fa19b96f918a78940"
+                  >
+                    在这篇Berkeley的paper中<a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_2"
+                      >[2]</a
+                    >，作者考虑了预言家。与平时狼人杀不同的是，玩家死后身份会揭示（注意，如果不揭示身份，只是让游戏更随机，<a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/search?q=%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A954609292%7D"
+                      >最优策略</a
+                    >会有nash equilibrium
+                  </div>
+                  <div
+                    class="notion-text notion-block-f94b29262baa4185ae03b352157075ab"
+                  >
+                    最优策略：
+                  </div>
+                  <div
+                    class="notion-text notion-block-f7caf2ce70564c189115de83ca6dbb4e"
+                  >
+                    <b>第一阶段：预言家还活着</b>
+                  </div>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-b5307457fe6747d8b7588372e88d7c1a"
+                  >
+                    <li>预言家随机验人，记录一份存活好人名单</li>
+                  </ul>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-8ffbf06e5bbd49e593e162dba54e2666"
+                  >
+                    <li>村民统一随机投死一个人</li>
+                  </ul>
+                  <div
+                    class="notion-text notion-block-a8e467c81e894ea88c8a5ce2a395c581"
+                  >
+                    <b>第二阶段：存活好人名单超过存活玩家数量一半</b>
+                  </div>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-a5f34caa5bc24a3783b1cb8164098c3f"
+                  >
+                    <li>预言家公布自己的身份，并且公布存活好人名单</li>
+                  </ul>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-f1162e7ac9864a7aa3c2271f3cc04317"
+                  >
+                    <li>
+                      所有村民投票投死预言家，以验证他的身份真假（这也防止了狼人说自己是预言家，因为身份会揭示
+                    </li>
+                  </ul>
+                  <div
+                    class="notion-text notion-block-9704d79bf3084979a6fa43298990baba"
+                  >
+                    <b>第三阶段：</b>
+                  </div>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-8add957810c840ad90be899a2f161097"
+                  >
+                    <li>名单上的好人统一投票名单外的人</li>
+                  </ul>
+                  <ul
+                    class="notion-list notion-list-disc notion-block-92a3cfc4693c494fa2449ef34c320783"
+                  >
+                    <li>名单外的人放弃投票</li>
+                  </ul>
+                  <div
+                    class="notion-text notion-block-23cbfe083bc14944bf023a21bc80a126"
+                  >
+                    有趣的是，作者还证明了，在有预言家的情况下，要想保持50%胜率，狼人数量应该与总人数线性相关（而不是情况1中的平方倍相关
+                  </div>
+                  <div
+                    class="notion-text notion-block-39a09f800c3f4318a401605a6c337cc8"
+                  >
+                    附上我读的其他狼人杀paper<a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_3"
+                      >[3]</a
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_4"
+                      >[4]</a
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_5"
+                      >[5]</a
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_6"
+                      >[6]</a
+                    ><a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="notion-link"
+                      href="https://www.zhihu.com/question/47863187/answer/954609292#ref_7"
+                      >[7]</a
+                    >，我也真是闲哈哈哈
+                  </div>
+                  <h3
+                    class="notion-h notion-h2 notion-h-indent-0 notion-block-f54680f039f74845b7b8c6ea77749466"
+                    data-id="f54680f039f74845b7b8c6ea77749466"
+                  >
+                    <span
+                      ><div
+                        id="f54680f039f74845b7b8c6ea77749466"
+                        class="notion-header-anchor"
+                      ></div>
+                      <a
+                        class="notion-hash-link"
+                        href="#f54680f039f74845b7b8c6ea77749466"
+                        title="参考"
+                        ><svg viewBox="0 0 16 16" width="16" height="16">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+                          ></path></svg></a
+                      ><span class="notion-h-title"><b>参考</b></span></span
+                    >
+                  </h3>
+                  <ol
+                    start="1"
+                    class="notion-list notion-list-numbered notion-block-199732a81d0543ce9ec2a5a2ec470717"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_1_0"
+                        ><b>^</b></a
+                      >A mathematical model of the Mafia game <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://arxiv.org/pdf/1009.1031.pdf"
+                        >https://arxiv.org/pdf/1009.1031.pdf</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="2"
+                    class="notion-list notion-list-numbered notion-block-9966641b5b944841a7478fe8bc962682"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_2_0"
+                        ><b>^</b></a
+                      >MAFIA: A THEORETICAL STUDY OF PLAYERS AND COALITIONS IN A
+                      PARTIAL INFORMATION ENVIRONMENT <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786"
+                        >https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="3"
+                    class="notion-list notion-list-numbered notion-block-fd168d3ed6f14256a5e89081ba1a0a7c"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_3_0"
+                        ><b>^</b></a
+                      >Development of Real-World Agent System for Werewolf
+                      Game <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf"
+                        >http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="4"
+                    class="notion-list notion-list-numbered notion-block-18caaa087a954343a60f5a9d5306bf73"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_4_0"
+                        ><b>^</b></a
+                      >Development of Real-World Agent System for Werewolf
+                      Game <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf"
+                        >https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="5"
+                    class="notion-list notion-list-numbered notion-block-30b69479bd4d4554be0aeb69e1d4557a"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_5_0"
+                        ><b>^</b></a
+                      >Detecting deception in Computer Mediated Communication: A
+                      social structral perspective <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y&amp;casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw"
+                        >http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar&amp;cbl=18750&amp;diss=y&amp;casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="6"
+                    class="notion-list notion-list-numbered notion-block-3ad961c05e6a464e9ec6c2cd1fd12364"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_6_0"
+                        ><b>^</b></a
+                      >A Study of AI Agent Commitment in One Night Ultimate
+                      Werewolf with Human Players <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092"
+                        >https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092</a
+                      >
+                    </li>
+                  </ol>
+                  <ol
+                    start="7"
+                    class="notion-list notion-list-numbered notion-block-1097d1948a254e268cfdf7f1e11539c8"
+                  >
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.zhihu.com/question/47863187/answer/954609292#ref_7_0"
+                        ><b>^</b></a
+                      >Keeping the Story Straight: A Comparison of Commitment
+                      Strategies for a Social Deduction Game <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="notion-link"
+                        href="https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218"
+                        >https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218</a
+                      >
+                    </li>
+                  </ol>
+                </article>
+                <aside class="notion-aside">
+                  <div class="notion-aside-table-of-contents">
+                    <div class="notion-aside-table-of-contents-header">
+                      Table of Contents
+                    </div>
+                    <nav class="notion-table-of-contents notion-gray">
+                      <a
+                        href="#83fda2456f28423780a42dffa46485be"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >情况1:无预言家</span
+                        ></a
+                      ><a
+                        href="#fa5ff76e36b54922ad5ad0fdfe110d2c"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >情况2:有预言家</span
+                        ></a
+                      ><a
+                        href="#f54680f039f74845b7b8c6ea77749466"
+                        class="notion-table-of-contents-item notion-table-of-contents-item-indent-level-0"
+                        ><span
+                          class="notion-table-of-contents-item-body"
+                          style="display:inline-block;margin-left:0"
+                          >参考</span
+                        ></a
+                      >
+                    </nav>
+                  </div>
+                  <div class="PageSocial_pageSocial__2WqHl">
+                    <a
+                      class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt"
+                      href="https://yihui-he.github.io"
+                      title="personal website"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#000000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                          ></path>
+                          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_twitter__-BgFt"
+                      href="https://twitter.com/he_yi_hui"
+                      title="Twitter @he_yi_hui"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"
+                          ></path>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_github__slQ0z"
+                      href="https://github.com/yihui-he"
+                      title="GitHub @yihui-he"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg></div></a
+                    ><a
+                      class="PageSocial_action__2zgVt PageSocial_linkedin__nElHT"
+                      href="https://www.linkedin.com/in/yihui-he-a4257aab"
+                      title="LinkedIn Yihui He"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><div class="PageSocial_actionBg__3CigO">
+                        <div class="PageSocial_actionBgPane__gbBkL"></div>
+                      </div>
+                      <div class="PageSocial_actionBg__3CigO">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"
+                          ></path>
+                        </svg></div
+                    ></a>
+                  </div>
+                </aside>
+              </div>
+            </main>
+            <footer class="styles_footer__1r_c6">
+              <div class="styles_copyright__3kWHj">
+                Copyright 2022
+                <!-- -->Yihui He
+              </div>
+              <div class="styles_social__235gY">
+                <a
+                  class="styles_twitter__WwfaA"
+                  href="https://yihui-he.github.io"
+                  title="Twitter @he_yi_hui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 576 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+                    ></path></svg></a
+                ><a
+                  class="styles_twitter__WwfaA"
+                  href="https://twitter.com/he_yi_hui"
+                  title="Twitter @he_yi_hui"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 512 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+                    ></path></svg></a
+                ><a
+                  class="styles_github__32xIr"
+                  href="https://github.com/yihui-he"
+                  title="GitHub @yihui-he"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 496 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+                    ></path></svg></a
+                ><a
+                  class="styles_linkedin__1XGvB"
+                  href="https://www.linkedin.com/in/yihui-he-a4257aab"
+                  title="LinkedIn Yihui He"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 448 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+                    ></path></svg
+                ></a>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="__NEXT_DATA__" type="application/json">
+      {
+        "props": {
+          "pageProps": {
+            "site": {
+              "domain": "yihui-he.github.io",
+              "name": "Yihui He",
+              "rootNotionPageId": "bd32b787e47149f38941174a9c6846b6",
+              "rootNotionSpaceId": null,
+              "description": "Yihui He, AI research scientist / full stack engineer"
+            },
+            "recordMap": {
+              "block": {
+                "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53": {
+                  "role": "reader",
+                  "value": {
+                    "id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "version": 35,
+                    "type": "page",
+                    "properties": {
+                      "title": [["狼人杀逻辑性", [["b"], ["b"]]]]
+                    },
+                    "content": [
+                      "d28cf6ce-e565-4ee0-adde-b2878edfa737",
+                      "caa06749-dc59-44a6-93a0-dbe1139aa4dd",
+                      "7199df2e-67eb-46de-90e0-af9650929473",
+                      "83fda245-6f28-4237-80a4-2dffa46485be",
+                      "778aef86-3f9e-4b78-b9d7-c148643fb498",
+                      "1361e782-c2bc-4501-a8c7-5dabab98d0d0",
+                      "5300d746-48e5-4b31-b22f-86c531a1c95c",
+                      "c7310f59-0d01-4c87-9732-0a21cc9fd189",
+                      "e14cfd8a-7840-46de-8905-5eb489389510",
+                      "fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c",
+                      "c52853de-a043-454f-a19b-96f918a78940",
+                      "f94b2926-2baa-4185-ae03-b352157075ab",
+                      "f7caf2ce-7056-4c18-9115-de83ca6dbb4e",
+                      "b5307457-fe67-47d8-b758-8372e88d7c1a",
+                      "8ffbf06e-5bbd-49e5-93e1-62dba54e2666",
+                      "a8e467c8-1e89-4ea8-8c8a-5ce2a395c581",
+                      "a5f34caa-5bc2-4a37-83b1-cb8164098c3f",
+                      "f1162e7a-c986-4a7a-a3c2-271f3cc04317",
+                      "9704d79b-f308-4979-a6fa-43298990baba",
+                      "8add9578-10c8-40ad-90be-899a2f161097",
+                      "92a3cfc4-693c-494f-a244-9ef34c320783",
+                      "23cbfe08-3bc1-4944-bf02-3a21bc80a126",
+                      "39a09f80-0c3f-4318-a401-605a6c337cc8",
+                      "f54680f0-39f7-4845-b7b8-c6ea77749466",
+                      "199732a8-1d05-43ce-9ec2-a5a2ec470717",
+                      "9966641b-5b94-4841-a747-8fe8bc962682",
+                      "fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c",
+                      "18caaa08-7a95-4343-a60f-5a9d5306bf73",
+                      "30b69479-bd4d-4554-be0a-eb69e1d4557a",
+                      "3ad961c0-5e6a-464e-9ec6-c2cd1fd12364",
+                      "1097d194-8a25-4e26-8cfd-f7f1e11539c8"
+                    ],
+                    "created_time": 1646015940000,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "bd32b787-e471-49f3-8941-174a9c6846b6",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "bd32b787-e471-49f3-8941-174a9c6846b6": {
+                  "role": "reader",
+                  "value": {
+                    "id": "bd32b787-e471-49f3-8941-174a9c6846b6",
+                    "version": 310,
+                    "type": "page",
+                    "properties": { "title": [["Yihui He’s Blog"]] },
+                    "content": [
+                      "cc62526f-e4eb-42e5-8e8f-a22c3abd7b46",
+                      "eb534ff0-d0e6-4c83-b817-92c761ad9034",
+                      "5d58a861-74df-4de4-b6cc-cb36b42072ab",
+                      "9229117d-ca53-4eee-b43b-a1ecf09cccdf",
+                      "07cdf7d1-24c9-4fd7-abc0-e1f79f38aafd",
+                      "41249f3f-76a2-458a-b13d-2bc06310337b",
+                      "09ac442d-d3b5-4f43-9531-90cdae7640b7",
+                      "76f263cc-0736-4657-91dd-551b1c541b4c",
+                      "fad54c70-af5c-42a3-a00a-ff18bea9c382",
+                      "9abe926f-8b36-4a60-a77e-e5436690a8c0",
+                      "84c674a7-bbe3-4ac5-88c7-68e0c3909585",
+                      "09517098-a843-437e-bb7a-4ac67866b29b",
+                      "e7a12f56-b48c-43bf-803e-96d70518685f",
+                      "932f5707-ab83-4542-af11-68fec7b5f28d",
+                      "e6311219-0ef8-4142-8a3f-eeedc910dd3b",
+                      "5f16dda4-316e-43af-a4ea-8fc6d6938404",
+                      "23859d82-2201-4bb6-a86a-db693ea4992a",
+                      "d5a94597-8cb4-43be-a6d0-0840b5518710",
+                      "c54caf49-d28c-46ac-b72d-fc9bfa58bbdd",
+                      "4751172a-1cb9-4633-84d6-21ba334ee3d7",
+                      "8e23ed11-04f5-48ab-a95d-1f47a5cd22af",
+                      "4b2fb8ba-1e4c-47ff-903b-0869360db746",
+                      "010faf71-b9e5-4c47-832a-658dafc6e7ae",
+                      "3db8e8fd-7383-4aea-8beb-608282db050e",
+                      "60ff1c6d-fde5-426d-ac57-7bba2a5296a2",
+                      "31008559-3d6f-4c33-bb50-4e463c9b19fb",
+                      "201efca9-ba21-47c3-8b0d-35b41dd3f91f",
+                      "04ced6eb-ca82-46db-8f8e-077f3bf6b29c",
+                      "daf31581-086b-4fb1-9695-5a79117d4300",
+                      "a0487f2c-eed0-4154-a6e8-2366ca1d7939",
+                      "95728d67-dc1f-4086-881b-1cd1bf72f985",
+                      "cba2b20a-aa13-466c-bcb6-a9f9c9f057da",
+                      "5e0b979d-ef00-44a3-894f-38d28cfd7576",
+                      "38a364d6-720a-4788-aeee-c2b224745860",
+                      "6a838606-233d-4584-b2f1-3d198b1603e8",
+                      "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                      "e8156bf2-5303-4590-a44a-6db1404c8c7b",
+                      "2411768d-af34-4f88-8772-c46ca4428256",
+                      "52357a78-3241-4a0a-bcb7-46bfd15070a4",
+                      "3f4c64fb-75dc-4ccd-9e22-ce5704d0dfdb",
+                      "d1ef1d4d-bfa8-40c4-a78c-037da96f3681",
+                      "8d0bc47c-6aaf-4ac2-ae09-a6830f9ad50c",
+                      "8f822963-88c4-4e82-8eac-8d0f8b606895",
+                      "7c5f4cc9-b8a0-498e-8484-ccc1dbf41912",
+                      "0ef9110d-6766-4f69-9412-586d40d755a9"
+                    ],
+                    "discussions": ["a13be18e-5008-4f8c-b07a-0fadb99d7450"],
+                    "format": {
+                      "page_icon": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/63e89fe9-f5cd-4414-be0e-53d91aa54fc3/me_small.jpg"
+                    },
+                    "permissions": [
+                      {
+                        "role": "editor",
+                        "type": "user_permission",
+                        "user_id": "9e9c4442-4350-473a-b900-c954b0bd7a95"
+                      },
+                      {
+                        "role": "reader",
+                        "type": "public_permission",
+                        "added_timestamp": 1645466303668
+                      }
+                    ],
+                    "created_time": 1645422720000,
+                    "last_edited_time": 1665526440000,
+                    "parent_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1",
+                    "parent_table": "space",
+                    "alive": true,
+                    "file_ids": [
+                      "e3d85759-49f2-40d2-ba30-d25ca401872e",
+                      "cfc564cc-91ae-4a96-a912-fcc9a28ec5db",
+                      "63e89fe9-f5cd-4414-be0e-53d91aa54fc3"
+                    ],
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "d28cf6ce-e565-4ee0-adde-b2878edfa737": {
+                  "role": "reader",
+                  "value": {
+                    "id": "d28cf6ce-e565-4ee0-adde-b2878edfa737",
+                    "version": 13,
+                    "type": "callout",
+                    "properties": {
+                      "title": [
+                        ["只有"],
+                        ["狼人村民预言家", [["b"]]],
+                        ["的情况下，这个游戏"],
+                        ["没有逻辑", [["b"]]],
+                        ["，因为存在"],
+                        ["固定的最优策略", [["b"]]],
+                        ["。"]
+                      ]
+                    },
+                    "format": {
+                      "page_icon": "💡",
+                      "block_color": "gray_background"
+                    },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "caa06749-dc59-44a6-93a0-dbe1139aa4dd": {
+                  "role": "reader",
+                  "value": {
+                    "id": "caa06749-dc59-44a6-93a0-dbe1139aa4dd",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "闲的无聊找了找关于狼人杀的学术论文，还真有人严谨的研究这玩意XD。由于12人预女猎守过于复杂，目前的research还停留在"
+                        ],
+                        ["狼人村民预言家", [["b"]]],
+                        ["的setting下。"]
+                      ]
+                    },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "7199df2e-67eb-46de-90e0-af9650929473": {
+                  "role": "reader",
+                  "value": {
+                    "id": "7199df2e-67eb-46de-90e0-af9650929473",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [["下面分两种情况介绍，无预言家，有预言家："]]
+                    },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "83fda245-6f28-4237-80a4-2dffa46485be": {
+                  "role": "reader",
+                  "value": {
+                    "id": "83fda245-6f28-4237-80a4-2dffa46485be",
+                    "version": 2,
+                    "type": "sub_header",
+                    "properties": { "title": [["情况1:无预言家", [["b"]]]] },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "778aef86-3f9e-4b78-b9d7-c148643fb498": {
+                  "role": "reader",
+                  "value": {
+                    "id": "778aef86-3f9e-4b78-b9d7-c148643fb498",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "这种情况下，村民的最优策略为，白天所有人统一随机投一个人，这样狼是少数无法左右投票结果。（如何做到统一且随机呢？每个人随机想一个数字，同时揭示这个数字，最终投票时，死的人是数字之和mod总人数）"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "1361e782-c2bc-4501-a8c7-5dabab98d0d0": {
+                  "role": "reader",
+                  "value": {
+                    "id": "1361e782-c2bc-4501-a8c7-5dabab98d0d0",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["2010年的论文"],
+                        ["A mathematical model of the Mafia game", [["i"]]],
+                        ["提供了"],
+                        ["胜率理论分析(exact formula)", [["b"]]],
+                        [
+                          "[1]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_1"
+                            ]
+                          ]
+                        ],
+                        ["。", [["b"]]],
+                        ["直接上结论（n为总人数，m为狼的数量，w(n,m)为胜率）："]
+                      ]
+                    },
+                    "created_time": 1646015942610,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "5300d746-48e5-4b31-b22f-86c531a1c95c": {
+                  "role": "reader",
+                  "value": {
+                    "id": "5300d746-48e5-4b31-b22f-86c531a1c95c",
+                    "version": 2,
+                    "type": "image",
+                    "properties": {
+                      "source": [
+                        [
+                          "https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+++++%5Ctilde%7Bw%7D%28n%2Cm%29%26%3D1-%5Ctilde%7Bp%7D_0%5Cleft%28%5Cfrac%7Bn-1%7D%7B2%7D%5Cright%29%3D1-%5Cleft%28+1-%5Csqrt%7B1-%5Cfrac%7Bn-1%7D%7Bn%7D%7D%5Cright%29%5Em%5C%5C+++++%26%5Capprox+%5Cfrac%7Bm%7D%7B%5Csqrt%7Bn%7D%7D+%5Cend%7Balign%7D"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942611,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "c7310f59-0d01-4c87-9732-0a21cc9fd189": {
+                  "role": "reader",
+                  "value": {
+                    "id": "c7310f59-0d01-4c87-9732-0a21cc9fd189",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "也就是说，胜率要想保持50%，总人数必须是狼的平方倍。比如4个狼，12个村民，总人数16。"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "e14cfd8a-7840-46de-8905-5eb489389510": {
+                  "role": "reader",
+                  "value": {
+                    "id": "e14cfd8a-7840-46de-8905-5eb489389510",
+                    "version": 2,
+                    "type": "image",
+                    "properties": {
+                      "source": [
+                        [
+                          "https://pica.zhimg.com/80/v2-d82e94774dc84c1c1fd6ee42864a8816_1440w.jpg?source=1940ef5c"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c": {
+                  "role": "reader",
+                  "value": {
+                    "id": "fa5ff76e-36b5-4922-ad5a-d0fdfe110d2c",
+                    "version": 2,
+                    "type": "sub_header",
+                    "properties": { "title": [["情况2:有预言家", [["b"]]]] },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "c52853de-a043-454f-a19b-96f918a78940": {
+                  "role": "reader",
+                  "value": {
+                    "id": "c52853de-a043-454f-a19b-96f918a78940",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["在这篇Berkeley的paper中"],
+                        [
+                          "[2]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_2"
+                            ]
+                          ]
+                        ],
+                        [
+                          "，作者考虑了预言家。与平时狼人杀不同的是，玩家死后身份会揭示（注意，如果不揭示身份，只是让游戏更随机，"
+                        ],
+                        [
+                          "最优策略",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/search?q=%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5\u0026search_source=Entity\u0026hybrid_search_source=Entity\u0026hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A954609292%7D"
+                            ]
+                          ]
+                        ],
+                        ["会有nash equilibrium"]
+                      ]
+                    },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "f94b2926-2baa-4185-ae03-b352157075ab": {
+                  "role": "reader",
+                  "value": {
+                    "id": "f94b2926-2baa-4185-ae03-b352157075ab",
+                    "version": 2,
+                    "type": "text",
+                    "properties": { "title": [["最优策略："]] },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "f7caf2ce-7056-4c18-9115-de83ca6dbb4e": {
+                  "role": "reader",
+                  "value": {
+                    "id": "f7caf2ce-7056-4c18-9115-de83ca6dbb4e",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [["第一阶段：预言家还活着", [["b"]]]]
+                    },
+                    "created_time": 1646015942612,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "b5307457-fe67-47d8-b758-8372e88d7c1a": {
+                  "role": "reader",
+                  "value": {
+                    "id": "b5307457-fe67-47d8-b758-8372e88d7c1a",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": {
+                      "title": [["预言家随机验人，记录一份存活好人名单"]]
+                    },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "8ffbf06e-5bbd-49e5-93e1-62dba54e2666": {
+                  "role": "reader",
+                  "value": {
+                    "id": "8ffbf06e-5bbd-49e5-93e1-62dba54e2666",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": { "title": [["村民统一随机投死一个人"]] },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "a8e467c8-1e89-4ea8-8c8a-5ce2a395c581": {
+                  "role": "reader",
+                  "value": {
+                    "id": "a8e467c8-1e89-4ea8-8c8a-5ce2a395c581",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["第二阶段：存活好人名单超过存活玩家数量一半", [["b"]]]
+                      ]
+                    },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "a5f34caa-5bc2-4a37-83b1-cb8164098c3f": {
+                  "role": "reader",
+                  "value": {
+                    "id": "a5f34caa-5bc2-4a37-83b1-cb8164098c3f",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": {
+                      "title": [["预言家公布自己的身份，并且公布存活好人名单"]]
+                    },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "f1162e7a-c986-4a7a-a3c2-271f3cc04317": {
+                  "role": "reader",
+                  "value": {
+                    "id": "f1162e7a-c986-4a7a-a3c2-271f3cc04317",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "所有村民投票投死预言家，以验证他的身份真假（这也防止了狼人说自己是预言家，因为身份会揭示"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "9704d79b-f308-4979-a6fa-43298990baba": {
+                  "role": "reader",
+                  "value": {
+                    "id": "9704d79b-f308-4979-a6fa-43298990baba",
+                    "version": 2,
+                    "type": "text",
+                    "properties": { "title": [["第三阶段：", [["b"]]]] },
+                    "created_time": 1646015942613,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "8add9578-10c8-40ad-90be-899a2f161097": {
+                  "role": "reader",
+                  "value": {
+                    "id": "8add9578-10c8-40ad-90be-899a2f161097",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": {
+                      "title": [["名单上的好人统一投票名单外的人"]]
+                    },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "92a3cfc4-693c-494f-a244-9ef34c320783": {
+                  "role": "reader",
+                  "value": {
+                    "id": "92a3cfc4-693c-494f-a244-9ef34c320783",
+                    "version": 2,
+                    "type": "bulleted_list",
+                    "properties": { "title": [["名单外的人放弃投票"]] },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "23cbfe08-3bc1-4944-bf02-3a21bc80a126": {
+                  "role": "reader",
+                  "value": {
+                    "id": "23cbfe08-3bc1-4944-bf02-3a21bc80a126",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        [
+                          "有趣的是，作者还证明了，在有预言家的情况下，要想保持50%胜率，狼人数量应该与总人数线性相关（而不是情况1中的平方倍相关"
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "39a09f80-0c3f-4318-a401-605a6c337cc8": {
+                  "role": "reader",
+                  "value": {
+                    "id": "39a09f80-0c3f-4318-a401-605a6c337cc8",
+                    "version": 2,
+                    "type": "text",
+                    "properties": {
+                      "title": [
+                        ["附上我读的其他狼人杀paper"],
+                        [
+                          "[3]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_3"
+                            ]
+                          ]
+                        ],
+                        [
+                          "[4]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_4"
+                            ]
+                          ]
+                        ],
+                        [
+                          "[5]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_5"
+                            ]
+                          ]
+                        ],
+                        [
+                          "[6]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_6"
+                            ]
+                          ]
+                        ],
+                        [
+                          "[7]",
+                          [
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_7"
+                            ]
+                          ]
+                        ],
+                        ["，我也真是闲哈哈哈"]
+                      ]
+                    },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "f54680f0-39f7-4845-b7b8-c6ea77749466": {
+                  "role": "reader",
+                  "value": {
+                    "id": "f54680f0-39f7-4845-b7b8-c6ea77749466",
+                    "version": 2,
+                    "type": "sub_header",
+                    "properties": { "title": [["参考", [["b"]]]] },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "199732a8-1d05-43ce-9ec2-a5a2ec470717": {
+                  "role": "reader",
+                  "value": {
+                    "id": "199732a8-1d05-43ce-9ec2-a5a2ec470717",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_1_0"
+                            ]
+                          ]
+                        ],
+                        ["A mathematical model of the Mafia game "],
+                        [
+                          "https://arxiv.org/pdf/1009.1031.pdf",
+                          [["a", "https://arxiv.org/pdf/1009.1031.pdf"]]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942614,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "9966641b-5b94-4841-a747-8fe8bc962682": {
+                  "role": "reader",
+                  "value": {
+                    "id": "9966641b-5b94-4841-a747-8fe8bc962682",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_2_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "MAFIA: A THEORETICAL STUDY OF PLAYERS AND COALITIONS IN A PARTIAL INFORMATION ENVIRONMENT "
+                        ],
+                        [
+                          "https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786",
+                          [
+                            [
+                              "a",
+                              "https://projecteuclid.org/download/pdfview_1/euclid.aoap/1211819786"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942615,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c": {
+                  "role": "reader",
+                  "value": {
+                    "id": "fd168d3e-d6f1-4256-a5e8-9081ba1a0a7c",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_3_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "Development of Real-World Agent System for Werewolf Game "
+                        ],
+                        [
+                          "http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf",
+                          [
+                            [
+                              "a",
+                              "http://ifaamas.org/Proceedings/aamas2018/pdfs/p1838.pdf"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942615,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "18caaa08-7a95-4343-a60f-5a9d5306bf73": {
+                  "role": "reader",
+                  "value": {
+                    "id": "18caaa08-7a95-4343-a60f-5a9d5306bf73",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_4_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "Development of Real-World Agent System for Werewolf Game "
+                        ],
+                        [
+                          "https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf",
+                          [
+                            [
+                              "a",
+                              "https://www.researchgate.net/profile/Hiroyuki_Iida3/publication/321822554_Mafia_Game_Setting_Research_using_Game_Refinement_Measurement/links/5a331c48458515afb63c599e/Mafia-Game-Setting-Research-using-Game-Refinement-Measurement.pdf"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942616,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "30b69479-bd4d-4554-be0a-eb69e1d4557a": {
+                  "role": "reader",
+                  "value": {
+                    "id": "30b69479-bd4d-4554-be0a-eb69e1d4557a",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_5_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "Detecting deception in Computer Mediated Communication: A social structral perspective "
+                        ],
+                        [
+                          "http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar\u0026cbl=18750\u0026diss=y\u0026casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw",
+                          [
+                            [
+                              "a",
+                              "http://search.proquest.com/openview/49416c351ada4571a4556cc86592c22b/1?pq-origsite=gscholar\u0026cbl=18750\u0026diss=y\u0026casa_token=uXFamzjvro0AAAAA:W9OVvYdrVsxBZYUZAFHU_wvjnxAbwASJyNuBWDH7aLHLuzmqQk5VQDu60fEa6FD0Nd2bZP8iEw"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942616,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "3ad961c0-5e6a-464e-9ec6-c2cd1fd12364": {
+                  "role": "reader",
+                  "value": {
+                    "id": "3ad961c0-5e6a-464e-9ec6-c2cd1fd12364",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_6_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "A Study of AI Agent Commitment in One Night Ultimate Werewolf with Human Players "
+                        ],
+                        [
+                          "https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092",
+                          [
+                            [
+                              "a",
+                              "https://wvvw.aaai.org/ojs/index.php/AIIDE/article/download/5236/5092"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942616,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                },
+                "1097d194-8a25-4e26-8cfd-f7f1e11539c8": {
+                  "role": "reader",
+                  "value": {
+                    "id": "1097d194-8a25-4e26-8cfd-f7f1e11539c8",
+                    "version": 2,
+                    "type": "numbered_list",
+                    "properties": {
+                      "title": [
+                        [
+                          "^",
+                          [
+                            ["b"],
+                            [
+                              "a",
+                              "https://www.zhihu.com/question/47863187/answer/954609292#ref_7_0"
+                            ]
+                          ]
+                        ],
+                        [
+                          "Keeping the Story Straight: A Comparison of Commitment Strategies for a Social Deduction Game "
+                        ],
+                        [
+                          "https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218",
+                          [
+                            [
+                              "a",
+                              "https://www.aaai.org/ocs/index.php/AIIDE/AIIDE18/paper/download/18095/17218"
+                            ]
+                          ]
+                        ]
+                      ]
+                    },
+                    "created_time": 1646015942617,
+                    "last_edited_time": 1646015940000,
+                    "parent_id": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53",
+                    "parent_table": "block",
+                    "alive": true,
+                    "created_by_table": "notion_user",
+                    "created_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "last_edited_by_table": "notion_user",
+                    "last_edited_by_id": "9e9c4442-4350-473a-b900-c954b0bd7a95",
+                    "space_id": "bb9288f4-efb5-417f-bf44-1a79fa04feb1"
+                  }
+                }
+              },
+              "space": {},
+              "discussion": {},
+              "comment": {},
+              "collection": {},
+              "collection_view": {},
+              "notion_user": {},
+              "collection_query": {},
+              "signed_urls": {},
+              "preview_images": {}
+            },
+            "pageId": "f93f1e88-d826-4cd3-ab2a-cd92ddd2ac53"
+          },
+          "__N_SSG": true
+        },
+        "page": "/[pageId]",
+        "query": { "pageId": "狼人杀逻辑性" },
+        "buildId": "SEeescF7W670MZeuakFMJ",
+        "assetPrefix": "/blog",
+        "isFallback": false,
+        "gsp": true,
+        "scriptLoader": []
+      }
+    </script>
+  </body>
+</html>
